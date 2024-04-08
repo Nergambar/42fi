@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:14:21 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:36 by negambar         ###   ########.fr       */
+/*   Created: 2023/11/13 10:59:02 by negambar          #+#    #+#             */
+/*   Updated: 2023/11/13 15:38:34 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-/*#include <stdio.h>*/
+#include "ft_printf.h"
 
-char	*ft_strdup(char *s)
+int	ft_print_c(int c)
 {
-	char	*n;
-	int		size;
-
-	size = ft_strlen(s);
-	n = malloc(sizeof(char) * (size + 1));
-	if (n == NULL)
-		return (NULL);
-	ft_memcpy(n, s, size);
-	return (n);
+	write(1, &c, 1);
+	return (1);
 }
-/*
-int main(int ac, char **av)
-{
-	if (ac == 2)
-		printf("%s", ft_strdup(av[1]));
-}*/

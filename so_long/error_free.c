@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   error_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:14:21 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:36 by negambar         ###   ########.fr       */
+/*   Created: 2024/04/08 12:57:37 by negambar          #+#    #+#             */
+/*   Updated: 2024/04/08 13:41:35 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-/*#include <stdio.h>*/
+#include "so_long.h"
 
-char	*ft_strdup(char *s)
+int map_free(char **mtx, t_struct *loop)
 {
-	char	*n;
-	int		size;
-
-	size = ft_strlen(s);
-	n = malloc(sizeof(char) * (size + 1));
-	if (n == NULL)
-		return (NULL);
-	ft_memcpy(n, s, size);
-	return (n);
+	if (!checkmap(loop, mtx, loop->pos[0], loop->pos[1]))
+	{
+		write(1, "invalid map\n", 12);
+		clearmtx(loop->matrix);
+		clearmtx(mtx);
+		free(loop);
+		return(1);
+	}
+	return (0);
 }
-/*
-int main(int ac, char **av)
-{
-	if (ac == 2)
-		printf("%s", ft_strdup(av[1]));
-}*/

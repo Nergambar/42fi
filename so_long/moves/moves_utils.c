@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   moves_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:14:21 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:36 by negambar         ###   ########.fr       */
+/*   Created: 2024/03/29 16:19:01 by negambar          #+#    #+#             */
+/*   Updated: 2024/04/05 10:54:19 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-/*#include <stdio.h>*/
 
-char	*ft_strdup(char *s)
+void	printmv(int moves)
 {
-	char	*n;
-	int		size;
-
-	size = ft_strlen(s);
-	n = malloc(sizeof(char) * (size + 1));
-	if (n == NULL)
-		return (NULL);
-	ft_memcpy(n, s, size);
-	return (n);
+	ft_putnbr(moves);
+	ft_putchar('\n');
 }
-/*
-int main(int ac, char **av)
-{
-	if (ac == 2)
-		printf("%s", ft_strdup(av[1]));
-}*/

@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:56:14 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:06 by negambar         ###   ########.fr       */
+/*   Created: 2023/10/23 12:06:21 by negambar          #+#    #+#             */
+/*   Updated: 2024/03/29 15:48:25 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "../so_long.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
 
-size_t	ft_strlcpy(char *dst, char *src, size_t size)
+void	ft_putchar(char c)
 {
-	size_t	i;
-
-	if (size == 0)
-		return (ft_strlen(src));
-	i = 0;
-	while (i < size - 1 && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	if (size > 0)
-		dst[i] = '\0';
-	return (ft_strlen(src));
+	write(1, &c, 1);
 }
 /*
 int main(int ac, char **av)
 {
-	if (ac == 3)
-	{
-		size_t size = ft_strlen(av[1]) + ft_strlen(av[2]);
-		printf("%zu", ft_strlcpy(av[1], av[2], size));
-	}
+	ft_putchar_fd('c', 1);
 }*/

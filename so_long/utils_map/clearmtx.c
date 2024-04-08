@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   clearmtx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:14:21 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:36 by negambar         ###   ########.fr       */
+/*   Created: 2024/03/18 14:19:22 by negambar          #+#    #+#             */
+/*   Updated: 2024/04/08 12:46:30 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-/*#include <stdio.h>*/
 
-char	*ft_strdup(char *s)
+void	clearmtx(char **matrix)
 {
-	char	*n;
-	int		size;
+	int	n;
 
-	size = ft_strlen(s);
-	n = malloc(sizeof(char) * (size + 1));
-	if (n == NULL)
-		return (NULL);
-	ft_memcpy(n, s, size);
-	return (n);
+	n = 0;
+	if (!matrix)
+		return ;
+	while (matrix[n] != NULL)
+	{
+		if (matrix[n])
+			free(matrix[n]);
+		n++;
+	}
+	free(matrix);
 }
-/*
-int main(int ac, char **av)
-{
-	if (ac == 2)
-		printf("%s", ft_strdup(av[1]));
-}*/

@@ -6,13 +6,13 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:21:28 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/19 12:03:52 by negambar         ###   ########.fr       */
+/*   Updated: 2024/03/29 12:07:11 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, char c)
 {
 	int		i;
 

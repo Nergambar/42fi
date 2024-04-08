@@ -6,11 +6,11 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:36:06 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/13 16:57:41 by negambar         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:25:52 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../so_long.h"
 /*#include <stdio.h>*/
 
 int	copy_string(char *dest, const char *src, int start)

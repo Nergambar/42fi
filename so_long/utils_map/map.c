@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:56:14 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:06 by negambar         ###   ########.fr       */
+/*   Created: 2024/03/13 12:30:48 by negambar          #+#    #+#             */
+/*   Updated: 2024/04/05 10:55:22 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "../so_long.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, char *src, size_t size)
+int	get_l(char **matrix)
 {
-	size_t	i;
+	int	i;
 
-	if (size == 0)
-		return (ft_strlen(src));
+	if (!matrix || !matrix[0])
+		return (0);
 	i = 0;
-	while (i < size - 1 && src[i])
-	{
-		dst[i] = src[i];
+	while (matrix[1][i] != '\0' && matrix[1][i] != '\n')
 		i++;
-	}
-	if (size > 0)
-		dst[i] = '\0';
-	return (ft_strlen(src));
+	return (i);
 }
-/*
-int main(int ac, char **av)
+
+int	get_h(char **matrix)
 {
-	if (ac == 3)
-	{
-		size_t size = ft_strlen(av[1]) + ft_strlen(av[2]);
-		printf("%zu", ft_strlcpy(av[1], av[2], size));
-	}
-}*/
+	int	i;
+
+	i = 0;
+	if (!matrix)
+		return (0);
+	while (matrix[i] != NULL)
+		i++;
+	return (i);
+}

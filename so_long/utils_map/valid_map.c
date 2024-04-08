@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:14:21 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:36 by negambar         ###   ########.fr       */
+/*   Created: 2024/04/04 11:38:00 by negambar          #+#    #+#             */
+/*   Updated: 2024/04/05 11:49:37 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-/*#include <stdio.h>*/
 
-char	*ft_strdup(char *s)
+int	valid_map(char **av)
 {
-	char	*n;
-	int		size;
+	int	fd;
 
-	size = ft_strlen(s);
-	n = malloc(sizeof(char) * (size + 1));
-	if (n == NULL)
-		return (NULL);
-	ft_memcpy(n, s, size);
-	return (n);
+	fd = open(av[1], O_RDONLY);
+	if (!fd)
+		return (0);
+	close(fd);
+	return (1);
 }
-/*
-int main(int ac, char **av)
-{
-	if (ac == 2)
-		printf("%s", ft_strdup(av[1]));
-}*/

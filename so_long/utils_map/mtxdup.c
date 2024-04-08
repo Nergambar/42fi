@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   mtxdup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:14:21 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:36 by negambar         ###   ########.fr       */
+/*   Created: 2024/03/25 17:53:46 by negambar          #+#    #+#             */
+/*   Updated: 2024/04/05 10:55:50 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-/*#include <stdio.h>*/
 
-char	*ft_strdup(char *s)
+char	**mtxdup(char **mtx)
 {
-	char	*n;
-	int		size;
+	char	**dup;
+	int		count;
 
-	size = ft_strlen(s);
-	n = malloc(sizeof(char) * (size + 1));
-	if (n == NULL)
+	count = get_h(mtx);
+	dup = (char **)ft_calloc((count + 1), sizeof(char *));
+	if (!dup)
 		return (NULL);
-	ft_memcpy(n, s, size);
-	return (n);
+	count = 0;
+	while (mtx[count])
+	{
+		dup[count] = ft_strdup(mtx[count]);
+		count++;
+	}
+	return (dup);
 }
-/*
-int main(int ac, char **av)
-{
-	if (ac == 2)
-		printf("%s", ft_strdup(av[1]));
-}*/

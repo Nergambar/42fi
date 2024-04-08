@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:14:21 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:36 by negambar         ###   ########.fr       */
+/*   Created: 2023/11/13 17:29:18 by negambar          #+#    #+#             */
+/*   Updated: 2023/11/15 16:52:21 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-/*#include <stdio.h>*/
+#include "ft_printf.h"
+#include <limits.h>
 
-char	*ft_strdup(char *s)
+int	ft_print_ptr(unsigned long long ptr)
 {
-	char	*n;
-	int		size;
+	int		count;
 
-	size = ft_strlen(s);
-	n = malloc(sizeof(char) * (size + 1));
-	if (n == NULL)
-		return (NULL);
-	ft_memcpy(n, s, size);
-	return (n);
+	if (!ptr)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
+	count = 0;
+	write(1, "0x", 2);
+	count += 2;
+	count += ft_print_hex((unsigned long)ptr, 'x');
+	return (count);
 }
-/*
-int main(int ac, char **av)
-{
-	if (ac == 2)
-		printf("%s", ft_strdup(av[1]));
-}*/
