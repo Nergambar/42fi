@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:49:33 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/08 15:04:34 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:37:54 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	is_walled(char **mtx)
 	i = 0;
 	length = get_l(mtx);
 	h = get_h(mtx) - 1;
-	while (i < length && mtx[0] != NULL)
+	while ((i < length && mtx[0] != NULL) || (i > length && mtx[0] != NULL))
 	{
 		if (mtx[0][i] != '1' || mtx[h][i] != '1')
 			return (0);

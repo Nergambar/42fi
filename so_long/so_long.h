@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:38:53 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/08 13:02:34 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:44:24 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int		is_walled(char **mtx);
 int		is_walled2(char **mtx);
 int		wall_maria(char **mtx);
 int		valid_map(char **av);
+int		checkvalid(t_struct *loop, char **av);
+void	loop_free(t_struct *loop);
 
 void	mtx(char **av, t_struct *sprites);
 int		get_l(char **matrix);

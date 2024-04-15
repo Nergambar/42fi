@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:39:16 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/05 11:55:42 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/14 11:29:58 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int	ft_strrchr2(char *s, char *c)
 		}
 		i--;
 	}
-	write(1, "invalid map! check the .ber ext and the path!\n", 46);
+	write(1, "Error\n[Invalid map! check the .ber and the path!]\n", 51);
 	return (0);
 }

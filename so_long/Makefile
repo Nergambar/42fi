@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 10:47:43 by negambar          #+#    #+#              #
-#    Updated: 2024/04/08 13:01:12 by negambar         ###   ########.fr        #
+#    Updated: 2024/04/14 11:59:35 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@ NAME = so_long
 LIBFT = ./libft
 PRINTF = ./printf
 
-SRC = utils_map/map_mtx.c utils_map/map.c  utils_map/valid_map.c \
-	utils_map/clearmtx.c utils_map/mtxdup.c error_free.c\
+SRC = utils_map/map_mtx.c utils_map/map.c \
+	utils_map/clearmtx.c utils_map/mtxdup.c \
 	gnl/get_next_line.c gnl/get_next_line_utils.c \
 	main.c  moves/moves.c moves/moves_utils.c \
 	images/image.c images/floodfill.c \
-	error.c screen_utils.c
+	error.c screen_utils.c error_free.c 
 
 CC = cc
 FLAGS = -Wall -Wextra -Werror -g -Ilibft -Iprintf

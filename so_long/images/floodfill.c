@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:06:42 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/08 15:04:43 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:56:18 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	check_quantity(char **mtx, t_struct *sprites)
 	exit_count = count(mtx, 'E', 0, 0);
 	player_count = count(mtx, 'P', 0, 0);
 	coll_count = count(mtx, 'C', 0, 0);
-	printf("p = %d\n e == %d\n cc = %d\n", player_count, exit_count, coll_count);
 	if (player_count != 1 || coll_count == 0 || exit_count != 1
 		|| !error_check(mtx) || !wall_maria(mtx))
 		return (0);
@@ -54,6 +53,11 @@ void	floodfill(char **map, int y, int x)
 {
 	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
+	if (map[y][x] == 'E')
+	{
+		map[y][x] = 'X';
+		return ;
+	}
 	map[y][x] = 'X';
 	floodfill(map, y + 1, x);
 	floodfill(map, y - 1, x);
