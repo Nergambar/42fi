@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 15:06:42 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/15 12:56:18 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:17:39 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	check_quantity(char **mtx, t_struct *sprites)
 	player_count = count(mtx, 'P', 0, 0);
 	coll_count = count(mtx, 'C', 0, 0);
 	if (player_count != 1 || coll_count == 0 || exit_count != 1
-		|| !error_check(mtx) || !wall_maria(mtx))
+		|| !error_check(mtx)
+		|| !wall_maria(mtx))
 		return (0);
 	sprites->ecount = exit_count;
 	sprites->collcount = coll_count;

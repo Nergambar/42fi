@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:49:33 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/15 12:37:54 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:07:51 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int	is_walled2(char **mtx)
 
 	i = 0;
 	h = get_h(mtx);
-	l = get_l(mtx) - 1;
+	l = get_l(mtx);
 	while (i < h)
 	{
-		if (mtx[i][0] != '1' || mtx[i][l] != '1')
+		if (mtx[i][0] != '1' || mtx[i][l - 1] != '1')
 			return (0);
 		i++;
 	}
@@ -61,9 +61,9 @@ int	is_walled(char **mtx)
 	i = 0;
 	length = get_l(mtx);
 	h = get_h(mtx) - 1;
-	while ((i < length && mtx[0] != NULL) || (i > length && mtx[0] != NULL))
+	while (i < length || mtx[0] != NULL || (len(mtx[i]) == get_l(mtx)))
 	{
-		if (mtx[0][i] != '1' || mtx[h][i] != '1')
+		if ((mtx[0][i] != '1' || mtx[h][i] != '1'))
 			return (0);
 		i++;
 	}

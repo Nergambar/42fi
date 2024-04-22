@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:38:53 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/15 12:44:24 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:09:09 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	init_graphics(t_struct *sprites, int x, int y);
 void	events(t_struct *loop);
 void	all_together(t_struct *loop, int x, int y);
 int		map_free(char **mtx, t_struct *loop);
+char	*get_next2(int fd);
 
 char	*get_next_line(int fd);
 int		ft_close(t_struct **loop);
@@ -62,6 +63,8 @@ void	floodfill(char **mtx, int y, int x);
 size_t	ft_strlen(char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, char stop_char);
+char	*ft_substrrileone(char const *s, unsigned int start, unsigned int end);
+
 char	*ft_calloc(size_t count, size_t size);
 
 void	image(t_struct *sprites);
@@ -80,8 +83,9 @@ int		valid_map(char **av);
 int		checkvalid(t_struct *loop, char **av);
 void	loop_free(t_struct *loop);
 
-void	mtx(char **av, t_struct *sprites);
+int		mtx(int fd, t_struct *loop);
 int		get_l(char **matrix);
+int		len(char *matt);
 int		get_h(char **matrix);
 int		valid_map(char **av);
 char	**mtxdup(char **mtx);

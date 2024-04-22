@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 10:47:43 by negambar          #+#    #+#              #
-#    Updated: 2024/04/14 11:59:35 by negambar         ###   ########.fr        #
+#    Updated: 2024/04/22 11:34:42 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ FLAGS = -Wall -Wextra -Werror -g -Ilibft -Iprintf
 MINILBX = -Lminilibx-linux -lmlx -Llibft -Lprintf -lftprintf -lft -lXext -lX11
 
 OBJ = $(SRC:.c=.o)
+
 all: $(NAME) $(LIBFT) $(PRINTF)
 $(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 		@echo Linking... $(NAME)

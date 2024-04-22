@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: negambar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:58:23 by negambar          #+#    #+#             */
-/*   Updated: 2023/10/11 16:12:27 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:16:23 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (str1[i] - str2[i]);
 }
-
 /*
 int main() {
   char str1[] = "Hello";

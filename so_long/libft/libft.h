@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 10:42:48 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/05 11:54:25 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:12:29 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	ft_bzero(void *s, int n);
 int		ft_atoi(const char *nptr);
 char	*ft_strdup(char *s);
+/* char	*ft_strjoin(char *s1, char *s2);*/
+char	*ft_join_free(char *s1, char *s2);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	**ft_split(char const *s, char c);
-
+int		count_words(char const *s, char c);
 #endif

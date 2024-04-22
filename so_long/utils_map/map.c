@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:30:48 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/15 12:35:41 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:10:36 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,25 @@
 
 int	get_l(char **matrix)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
+	size_t	n;
 
-	if (!matrix || !matrix[0])
-		return (0);
+	j = 0;
 	i = 0;
-	while (matrix[1][i] != '\0' && matrix[1][i] != '\n')
+	if (!matrix || !matrix[j])
+		return (0);
+	while (matrix[j][i])
 		i++;
-	return (i);
+	n = i;
+	while (matrix[j])
+	{
+		if (ft_strlen(matrix[j]) != n || matrix[j][0] == '\0'
+			|| matrix[j][0] == '\n')
+			return (0);
+		j++;
+	}
+	return (n);
 }
 
 int	get_h(char **matrix)

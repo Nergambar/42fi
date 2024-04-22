@@ -6,58 +6,47 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:41:14 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/05 10:55:03 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:16:46 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static int	get_high(char **av)
+char	*get_next2(int fd)
 {
-	int		i;
 	char	*s;
-	int		fd;
+	char	*tmp;
 
-	s = NULL;
-	i = 0;
-	fd = open(av[1], O_RDONLY);
-	while (1)
-	{
-		s = get_next_line(fd);
-		if (s == NULL)
-			break ;
-		free(s);
-		i++;
-	}
-	close(fd);
-	return (i);
+	s = get_next_line(fd);
+	tmp = ft_strtrim(s, "\n");
+	free (s);
+	return (tmp);
 }
 
-void	mtx(char **av, t_struct *sprites)
+int	mtx(int fd, t_struct *loop)
 {
-	int		height;
-	char	*s;
-	int		i;
-	int		fd;
+	char	*maplines;
+	char	*line;
 
-	s = NULL;
-	fd = open(av[1], O_RDONLY);
-	i = 0;
-	height = get_high(av);
-	sprites->matrix = (char **)malloc(sizeof(char *) * (height + 1));
-	if (!sprites->matrix)
-		return ;
-	s = get_next_line(fd);
-	while (s)
+	maplines = NULL;
+	line = get_next_line(fd);
+	if (line == NULL)
+		return (0);
+	while (1)
 	{
-		sprites->matrix[i] = ft_strdup(s);
-		free(s);
-		s = get_next_line(fd);
-		if (!sprites->matrix[i])
-			clearmtx(sprites->matrix);
-		i++;
+		if (line[0] == '\0' || line[0] == '\n' || ft_strlen(line) == 0)
+		{
+			free(line);
+			ft_printf("Error\nCheck the file!\n");
+			exit(1);
+		}
+		maplines = ft_join_free(maplines, line);
+		free(line);
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
 	}
-	free(s);
-	sprites->matrix[i] = 0;
-	close(fd);
+	loop->matrix = ft_split(maplines, '\n');
+	free(maplines);
+	return (1);
 }

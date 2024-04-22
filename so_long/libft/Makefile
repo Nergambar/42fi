@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 16:52:41 by negambar          #+#    #+#              #
-#    Updated: 2024/03/29 15:50:28 by negambar         ###   ########.fr        #
+#    Updated: 2024/04/19 11:33:53 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = libft.a
 # Source files and object files #
 SRC = ft_strlcat.c \
 ft_atoi.c ft_strlcpy.c ft_putnbr.c ft_putchar.c\
-ft_bzero.c ft_memchr.c ft_strlen.c \
+ft_bzero.c ft_memchr.c ft_strlen.c ft_strtrim.c\
 ft_memcmp.c ft_split.c ft_strmapi.c \
 ft_memcpy.c ft_strchr.c ft_strncmp.c \
 ft_memmove.c ft_strdup.c ft_strnstr.c \
@@ -29,7 +29,7 @@ BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 # Compiler and compiler flags #
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Targets #
 $(NAME): $(OBJ)

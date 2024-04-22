@@ -6,21 +6,21 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:36:06 by negambar          #+#    #+#             */
-/*   Updated: 2024/03/28 13:25:52 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:13:14 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 /*#include <stdio.h>*/
 
-int	copy_string(char *dest, const char *src, int start)
+int	copy_string(char **dest, const char *src, int start)
 {
 	size_t	i;
 
 	i = start;
 	while (src[i - start] != '\0')
 	{
-		dest[i] = src[i - start];
+		*dest[i] = src[i - start];
 		i++;
 	}
 	return (i);
@@ -28,21 +28,28 @@ int	copy_string(char *dest, const char *src, int start)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*sf;
+	char	*out;
+	int		len1;
+	int		len2;
 	int		i;
+	int		j;
 
+	j = 0;
 	i = 0;
-	if (!s1)
-		return (NULL);
-	sf = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (sf)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	out = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!(out))
+		return (0);
+	while (i < len1)
+		out[i++] = *(s1++);
+	while (j < len2)
 	{
-		i = copy_string(sf, s1, i);
-		i = copy_string(sf, s2, i);
-		sf[i] = '\0';
-		return (sf);
+		out[i++] = *(s2++);
+		j++;
 	}
-	return (NULL);
+	out[i] = '\0';
+	return (out);
 }
 /*
 int main(int ac, char **av)

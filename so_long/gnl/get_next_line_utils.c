@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:44:00 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/04 12:21:50 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 11:11:35 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,26 @@ char	*ft_substr(char const *s, unsigned int start, char stop_char)
 		str[i++] = '\n';
 	str[i] = '\0';
 	return (str);
+}
+
+char	*ft_substrrileone(char const *s, unsigned int start, unsigned int end)
+{
+	char	*out;
+	int		i;
+	int		len;
+
+	len = end - start;
+	out = ft_calloc(len + 1, sizeof(char));
+	if (out == NULL)
+		return (NULL);
+	i = 0;
+	while (start < end)
+	{
+		out[i] = s[start];
+		start++;
+		i++;
+	}
+	return (out);
 }
 
 char	*ft_calloc(size_t count, size_t size)

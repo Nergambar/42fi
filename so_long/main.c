@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:52:29 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/15 12:56:47 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:19:16 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,24 @@ int	main(int ac, char **av)
 	int			i;
 	int			j;
 
-	if (ac == 2)
-	{
-		loop = (t_struct *)malloc(sizeof(t_struct));
-		if (!checkvalid(loop, av))
-			return (1);
-		loop->matrix = NULL;
-		loop->xy = 0;
-		if (valid_map(av) == 0)
-			return (loop_free(loop), 1);
-		mtx(av, loop);
-		i = get_l(loop->matrix);
-		j = get_h(loop->matrix);
-		dup = mtxdup(loop->matrix);
-		loop->moves = 1;
-		if (map_free(dup, loop))
-			return (1);
-		clearmtx(dup);
-		all_together(loop, i, j);
-	}
+	if (ac != 2)
+		return (1);
+	loop = (t_struct *)malloc(sizeof(t_struct));
+	if (!checkvalid(loop, av))
+		return (1);
+	loop->matrix = NULL;
+	loop->xy = 0;
+	if (valid_map(av) == 0)
+		return (loop_free(loop), 1);
+	if (!mtx(open(av[1], O_RDONLY), loop))
+		return (ft_printf("Error\ninvalid map"), free(loop), 1);
+	i = get_l(loop->matrix);
+	j = get_h(loop->matrix);
+	dup = mtxdup(loop->matrix);
+	loop->moves = 1;
+	if (map_free(dup, loop))
+		return (1);
+	clearmtx(dup);
+	all_together(loop, i, j);
 	return (0);
 }
