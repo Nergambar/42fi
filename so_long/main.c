@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:52:29 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/22 14:19:16 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:38:26 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int	ft_close(t_struct **loop)
 
 int	close_wind(int key, t_struct *loop)
 {
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 	if (key == XK_Escape || key == XK_q)
 		ft_close(&loop);
 	if (key == XK_Up || key == XK_w)
@@ -48,8 +53,6 @@ int	main(int ac, char **av)
 {
 	t_struct	*loop;
 	char		**dup;
-	int			i;
-	int			j;
 
 	if (ac != 2)
 		return (1);
@@ -61,14 +64,13 @@ int	main(int ac, char **av)
 	if (valid_map(av) == 0)
 		return (loop_free(loop), 1);
 	if (!mtx(open(av[1], O_RDONLY), loop))
-		return (ft_printf("Error\ninvalid map"), free(loop), 1);
-	i = get_l(loop->matrix);
-	j = get_h(loop->matrix);
+		return (ft_printf("Error\e[unexpected map found]"), free(loop), 1);
+	valid_h_l(loop->matrix, loop);
 	dup = mtxdup(loop->matrix);
 	loop->moves = 1;
 	if (map_free(dup, loop))
 		return (1);
 	clearmtx(dup);
-	all_together(loop, i, j);
+	all_together(loop, get_l(loop->matrix), get_h(loop->matrix));
 	return (0);
 }

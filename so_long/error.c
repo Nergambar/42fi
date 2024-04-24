@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:49:33 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/22 14:07:51 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:39:56 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,20 @@ int	wall_maria(char **mtx)
 {
 	if (is_walled2(mtx) && is_walled2(mtx))
 		return (1);
+	else
+		write(1, "Error\n[Wall maria is under attack!]", 35);
 	return (0);
+}
+
+int	valid_h_l(char **mtx, t_struct *loop)
+{
+	if ((get_h(mtx) < 3 || get_l(mtx) < 5)
+		|| (get_h(mtx) < 5 || get_l(mtx) < 3))
+	{
+		ft_printf("Error\n[length or heigth invalid]");
+		clearmtx(mtx);
+		free(loop);
+		exit(1);
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:38:53 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/22 11:09:09 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:32:02 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	events(t_struct *loop);
 void	all_together(t_struct *loop, int x, int y);
 int		map_free(char **mtx, t_struct *loop);
 char	*get_next2(int fd);
+void	closing(t_struct *loop);
+int		valid_h_l(char **mtx, t_struct *loop);
 
 char	*get_next_line(int fd);
 int		ft_close(t_struct **loop);

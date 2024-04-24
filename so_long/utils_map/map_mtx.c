@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:41:14 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/22 11:16:46 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/23 11:08:08 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	mtx(int fd, t_struct *loop)
 		if (line[0] == '\0' || line[0] == '\n' || ft_strlen(line) == 0)
 		{
 			free(line);
-			ft_printf("Error\nCheck the file!\n");
+			ft_printf("Error\n[Check the file!]\n");
 			exit(1);
 		}
 		maplines = ft_join_free(maplines, line);

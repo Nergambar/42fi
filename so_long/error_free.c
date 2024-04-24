@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:57:37 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/19 12:33:39 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/23 11:06:59 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	map_free(char **mtx, t_struct *loop)
 {
 	if (!checkmap(loop, mtx, loop->pos[0], loop->pos[1]))
 	{
-		write(1, "Error\n[Invalid map]\n", 20);
 		clearmtx(loop->matrix);
 		clearmtx(mtx);
 		free(loop);
@@ -27,6 +26,6 @@ int	map_free(char **mtx, t_struct *loop)
 
 void	loop_free(t_struct *loop)
 {
-	write(1, "Error\n[Invalid map]\n", 20);
+	write(1, "Error\n[error 404 file not found]\n", 32);
 	free(loop);
 }
