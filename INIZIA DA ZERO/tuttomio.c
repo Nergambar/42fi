@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:02:05 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 18:43:02 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 19:16:34 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ void five(stack **a, stack **b)
 	}
 }
 
-void four(stack **a, stack **b, int size)
+void four(stack **a, stack **b)
 {
 	int low;
-	// (void)b;
+	int hi;
+
+	hi = tallest(*a);
 	low = low_value(*a);
-	if ((*a)->value != low)
-		while ((*a)->value != low)
+	if ((*a)->value != low && (*a)->next->value != hi)
+		while ((*a)->value != low && (*a)->next->value != hi)
 			do_ra(a);
-	if (sorted_stack(*a, size))
-		return ;
-	do_pb(a, b);
-	tiny(a, b);
 	do_pa(a, b);
+	tiny(a, b);
+	do_pb(b, a);
 }
 
 void indexes(stack *a, int size)

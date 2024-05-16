@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:28:40 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 18:39:26 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:53:26 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void push_swap(stack **a, stack **b, int size)
 	if (size == 3)
 		tiny(a, b);
 	else if (size == 4)
-		four(a, b, size);
+		four(a, b);
 	else if (size == 5)
 		five(a, b);
 }
