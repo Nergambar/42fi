@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:30:13 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/14 12:08:21 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:23:40 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_atoimdf(const char *nptr)
 			result += str[i] - '0';
 		}
 		else
-			return(0);
+			fterror(2);
 		i++;
 	}
 	return (sign * result);

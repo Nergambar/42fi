@@ -1,17 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/04 14:35:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 13:32:34 by negambar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "push_swap.h"
-
 void add_nodes(long num, stack **a)
 {
     if (num >= INT_MAX || num <= INT_MIN)
@@ -87,16 +73,15 @@ int		main(int ac, char **av)
 		{
 			if (!check_number(av[i]))
 				fterror(2);
-			if (ft_atoimdf(av[i]))
-				dup[i - 1] = ft_atoimdf(av[i]);
+			dup[i - 1] = ft_atoimdf(av[i]);
 		}
 		if (dups(dup, i - 1) || sorted(dup, i - 1))
 			fterror(2);
 		size = i - 1;
 		b = (stack *)ft_calloc(1, sizeof(stack));
 		fill_stack_a(av, size, a);
-		indexes(a, size);
-		push_swap(a, b, size);
+		/* indexes(a, size);
+		push_swap(a, b, size); */
 	}
 	while(a)
 	{
@@ -110,3 +95,35 @@ int		main(int ac, char **av)
 	}
 	ft_lstclear(&a);
 }
+void fill_stack_a(char **av, int size, stack *a)
+{
+	int i;
+
+	i = 0;
+	a->value = 0;
+	printf("size::%d\n", size);
+	printf("i::%d\n", i);
+	while(i < size)
+	{
+		if (a)
+		{
+			if (ft_isdigit(av[i]))
+			{
+				if (a->value == 0)
+				{
+					printf("entrato\n");
+					add_nodes(ft_atoimdf(av[i]), a);
+					a->value = 1; // Update the value after adding the node
+				}
+				else
+				{
+					printf("entrato2\n");
+					tail_add(ft_atoimdf(av[i]), a);
+				}
+			}
+		}
+		printf("%d < %d\n", i , size);
+		i++;
+	}
+}
+
