@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:10:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 17:19:38 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:33:53 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,20 @@ void swap(stack *a, stack *b, char c)
 		write(1, "ss\n", 3);
 	}
 }
-void	rrotate(stack **stack)
+
+void	rrotate(stack **s)
 {
 	stack	*tmp;
 	stack	*tail;
 	stack	*before_tail;
 
-	tail = get_stack_bottom(*stack);
-	before_tail = get_stack_before_bottom(*stack);
-	tmp = *stack;
-	*stack = tail;
-	(*stack)->next = tmp;
+	tail = get_stack_bottom(*s);
+	before_tail = get_stack_before_bottom(*s);
+	tmp = *s;
+	*s = tail;
+	(*s)->next = tmp;
 	before_tail->next = NULL;
 }
-
 
 void do_rra(stack **stack_a)
 {
@@ -116,81 +116,3 @@ void	do_pb(stack **stack_a, stack **stack_b)
 	push(stack_a, stack_b);
 	ft_putstr_fd("pb\n", 1);
 }
-
-/* 
-void rotate(stack **a, stack **b, char c)
-{
-    stack *end;
-    stack *tmp;
-
-	end = (stack *)ft_calloc(1, sizeof(stack));
-	tmp = NULL;
-
-    if ((!(*a) && !(*a)) || (!(*a)->next && !(*a)->next))
-        return;
-    if (c == 'a' && *a && (*a)->next)
-    {
-		tmp = *a;
-		*a = (*a)->next;
-		end = get_stack_bottom(*a);
-		tmp->next = NULL;
-		end->next = tmp;
-		write(1, "ra\n", 3);
-    }
-    if (c == 'b' && *a && (*a)->next)
-    {
-		tmp = *b;
-		*b = (*b)->next;
-		end = get_stack_bottom(*b);
-		tmp->next = NULL;
-		end->next = tmp;
-		write(1, "rb\n", 3);
-    }
-	if (c == 'r')
-	{
-		rotate(a, b, 'a');
-		rotate(a, b, 'b');
-	}
-} */
-
-
-/* void rrotate(stack **a, stack **b, int size, char c)
-{
-	stack *end;
-	stack *tmp;
-
-	end = (stack *)malloc(sizeof(stack));
-	end = NULL;
-	tmp = (stack *)malloc(sizeof(stack));
-	tmp = NULL;
-	if ((!(*a) && !(*b)) || (!(*a)->next && !(*b)->next))
-        return;
-	if (c == 'a' && *a && (*a)->next)
-    {
-        end = ft_lstlast(*a); 
-        tmp = end->prev;      
-        tmp->next = NULL;
-        end->next = (*a);
-        end->prev = NULL;     
-        (*a)->prev = end;
-        *a = end;
-		indexes(*a, size);
-		write(1, "rra\n", 4);
-    }
-	if (c == 'b' && *b && (*b)->next)
-    {
-        end = ft_lstlast(*b);
-        tmp = end->prev;      
-        tmp->next = NULL;
-        end->next = (*b);
-        end->prev = NULL;     
-        (*b)->prev = end;
-        *b = end;
-		indexes(*b, size);
-    }
-	if (c == 'r')
-	{
-		rrotate(a, b, size, 'a');
-		rrotate(a, b, size, 'b');
-	}
-} */

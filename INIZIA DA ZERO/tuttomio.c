@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:02:05 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 15:05:16 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:43:02 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,32 @@ void five(stack **a, stack **b)
 		do_ra(a);
 	do_pa(a, b);
 	tiny(a, b);
-	/*do_pb(b, a);
-	do_pb(b, a);
-	if ((*a)->next)
-		swap(*a, *b, 'a');
-	do_ra(a); */
+	if ((*b)->value == tall)
+	{	
+		do_pb(b, a);
+		do_ra(a);
+	}
+	else
+	{
+		do_pb(b, a);
+		do_pb(b, a);
+		do_ra(a);
+	}
+}
+
+void four(stack **a, stack **b, int size)
+{
+	int low;
+	// (void)b;
+	low = low_value(*a);
+	if ((*a)->value != low)
+		while ((*a)->value != low)
+			do_ra(a);
+	if (sorted_stack(*a, size))
+		return ;
+	do_pb(a, b);
+	tiny(a, b);
+	do_pa(a, b);
 }
 
 void indexes(stack *a, int size)

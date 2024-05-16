@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:28:40 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 17:16:27 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:39:26 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void tiny(stack **a, stack **b)
 		swap(*a, *b, 'a');
 	else if ((*a)->value == hi && end->value == lowest)
 	{
-		//swap(*a, *b, 'a');
+		swap(*a, *b, 'a');
 		do_rra(a);
 	}
 	else if ((*a)->value == hi && (*a)->next->value == lowest)
 		do_ra(a);
-	/* else if ((*a)->next != NULL && (*a)->value > (*a)->next->value)
-		swap(*a, *b, 'a');
-	*/else if ((*a)->value == lowest && (*a)->next->value == hi)
+	else if (end->value == lowest)
+		do_rra(a);
+	else if ((*a)->value == lowest && (*a)->next->value == hi)
 	{
 		swap(*a, *b, 'a');
 		do_ra(a);
@@ -48,6 +48,8 @@ void push_swap(stack **a, stack **b, int size)
 		swap(*a, *b, 'a');
 	if (size == 3)
 		tiny(a, b);
+	else if (size == 4)
+		four(a, b, size);
 	else if (size == 5)
 		five(a, b);
 }

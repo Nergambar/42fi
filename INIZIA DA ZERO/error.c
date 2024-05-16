@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:39:11 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/06 17:05:39 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:43:14 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,23 @@ int sorted(int *dup, int end)
 		return(1);
 	return(0);
 }
+int sorted_stack(stack *s, int size)
+{
+	int i;
+	int count;
 
+	i = 0;
+	count = 0;
+	while (i < size)
+	{
+		if (s->value < s->next->value)
+			count++;
+		i++;
+	}
+	if (count == size)
+		return(1);
+	return(0);
+}
 int dups(int *dup, int end)
 {
 	int i;

@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:31:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 13:32:11 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:27:19 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@ void fill_stack_a(char **av, int size, stack *a)
 
 	while(i <= size)
 	{
-		if (ft_isdigit(av[i]))
+		if (ft_isdigit(av[i]) && a)
 		{
-			if (a->value == 0)
+			if (i == 1)
 			{
-				add_nodes(ft_atoimdf(av[i]), &a);// Update the value after adding the node
+				add_nodes(ft_atoimdf(av[i]), &a);
+				a->flag = true;
 			}
 			else
 			{
 				tail_add(ft_atoimdf(av[i]), &a);
-				a = a->next;
+				a = a->next; // Assign the value of 0 to the assigned element in the stack.
+				printf("a->value = %d\n", a->value);
 			}
 		}
 		i++;
