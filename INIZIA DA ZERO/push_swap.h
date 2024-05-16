@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:51:59 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 11:57:40 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:50:29 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct t_struct
 	struct t_struct	*prev;
 }	stack;
 
-void	five(stack *a, stack *b, int size);
+stack	*get_stack_bottom(stack *stack);
+void	five(stack **a, stack **b);
 void	add_nodes(long num, stack **a);
 void	tail_add(long n, stack **a);
 int 	check_number(char *str);
@@ -39,19 +40,25 @@ void	fterror(int i);
 int		dups(int *dup, int end);
 void	fill_stack_a(char **av, int size, stack *a);
 void	indexes(stack *a, int size);
-void	tiny(stack *a, stack *b, int size);
+void	tiny(stack **a, stack **b);
 int		low_value(stack *a);
 //void	get_target_pos(stack *a);
 
 void	swap(stack *a, stack *b, char c);
-void	rotate(stack **a, stack **b, int size, char c);
-void	rrotate(stack **a, stack **b, int size, char c);
-//void	push(stack **a,, char c);
-void	push(stack **to, stack **from, int size);
-// void	do_pa(stack **a, stack **b);
-// void	do_pb(stack **a, stack **b);
 
-void	push_swap(stack *a, stack *b, int ac);
+void	rotate(stack **stack);
+void	do_ra(stack **stacka);
+void	do_rb(stack **stackb);
+
+void	rrotate(stack **s);
+void	do_rra(stack **stacka);
+void	do_rrb(stack **stackb);
+
+void	push(stack **src, stack **dest);
+void	do_pa(stack **stack_a, stack **stack_b);
+void	do_pb(stack **stack_a, stack **stack_b);
+
+void	push_swap(stack **a, stack **b, int ac);
 int		nb_abs(int n);
 int		tallest(stack *a);
 int		sorted(int *dup, int end);

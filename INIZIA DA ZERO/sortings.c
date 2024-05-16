@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:10:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 11:54:36 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:19:38 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,84 @@ void swap(stack *a, stack *b, char c)
 		write(1, "ss\n", 3);
 	}
 }
+void	rrotate(stack **stack)
+{
+	stack	*tmp;
+	stack	*tail;
+	stack	*before_tail;
 
-void rotate(stack **a, stack **b, int size, char c)
+	tail = get_stack_bottom(*stack);
+	before_tail = get_stack_before_bottom(*stack);
+	tmp = *stack;
+	*stack = tail;
+	(*stack)->next = tmp;
+	before_tail->next = NULL;
+}
+
+
+void do_rra(stack **stack_a)
+{
+	rrotate(stack_a);
+	ft_putstr_fd("rra\n", 1);
+}
+
+void do_rrb(stack **stack_b)
+{
+	rrotate(stack_b);
+	ft_putstr_fd("rrb\n", 1);
+}
+
+void	rotate(stack **stac)
+{
+	stack	*tmp;
+	stack	*tail;
+
+	tmp = *stac;
+	*stac = (*stac)->next;
+	tail = get_stack_bottom(*stac);
+	tmp->next = NULL;
+	tail->next = tmp;
+}
+
+void	do_ra(stack **stack_a)
+{
+	rotate(stack_a);
+	ft_putstr_fd("ra\n", 1);
+}
+
+void	do_rb(stack **stack_b)
+{
+	rotate(stack_b);
+	ft_putstr_fd("rb\n", 1);
+}
+
+
+void	push(stack **src, stack **dest)
+{
+	stack	*tmp;
+
+	if (*src == NULL)
+		return ;
+	tmp = (*src)->next;
+	(*src)->next = *dest;
+	*dest = *src;
+	*src = tmp;
+}
+
+void	do_pa(stack **stack_b, stack **stack_a)
+{
+	push(stack_b, stack_a);
+	ft_putstr_fd("pa\n", 1);
+}
+
+void	do_pb(stack **stack_a, stack **stack_b)
+{
+	push(stack_a, stack_b);
+	ft_putstr_fd("pb\n", 1);
+}
+
+/* 
+void rotate(stack **a, stack **b, char c)
 {
     stack *end;
     stack *tmp;
@@ -54,47 +130,44 @@ void rotate(stack **a, stack **b, int size, char c)
         return;
     if (c == 'a' && *a && (*a)->next)
     {
-        tmp = *a;
-        (*a)->prev = NULL;
-        ft_lstlast(*a);
-		end->next = NULL;
-        end->next = tmp;
-        tmp->prev = end;
-        tmp->next = NULL;
-		indexes(*a, size);
+		tmp = *a;
+		*a = (*a)->next;
+		end = get_stack_bottom(*a);
+		tmp->next = NULL;
+		end->next = tmp;
 		write(1, "ra\n", 3);
     }
     if (c == 'b' && *a && (*a)->next)
     {
 		tmp = *b;
-        (*b) = (*b)->next;
-        (*b)->prev = NULL;
-        ft_lstlast(*b);
-        end->next = tmp;
-        tmp->prev = end;
-        tmp->next = NULL;
-		indexes(*b, size);
+		*b = (*b)->next;
+		end = get_stack_bottom(*b);
+		tmp->next = NULL;
+		end->next = tmp;
 		write(1, "rb\n", 3);
     }
 	if (c == 'r')
 	{
-		rotate(a, b, size, 'a');
-		rotate(a, b, size, 'b');
+		rotate(a, b, 'a');
+		rotate(a, b, 'b');
 	}
-}
+} */
 
-void rrotate(stack **a, stack **b, int size, char c)
+
+/* void rrotate(stack **a, stack **b, int size, char c)
 {
 	stack *end;
 	stack *tmp;
 
+	end = (stack *)malloc(sizeof(stack));
 	end = NULL;
+	tmp = (stack *)malloc(sizeof(stack));
 	tmp = NULL;
 	if ((!(*a) && !(*b)) || (!(*a)->next && !(*b)->next))
         return;
 	if (c == 'a' && *a && (*a)->next)
     {
-        ft_lstlast(*a); 
+        end = ft_lstlast(*a); 
         tmp = end->prev;      
         tmp->next = NULL;
         end->next = (*a);
@@ -106,7 +179,7 @@ void rrotate(stack **a, stack **b, int size, char c)
     }
 	if (c == 'b' && *b && (*b)->next)
     {
-        ft_lstlast(*b);
+        end = ft_lstlast(*b);
         tmp = end->prev;      
         tmp->next = NULL;
         end->next = (*b);
@@ -120,47 +193,4 @@ void rrotate(stack **a, stack **b, int size, char c)
 		rrotate(a, b, size, 'a');
 		rrotate(a, b, size, 'b');
 	}
-}
-
-void	push(stack **stack_to, stack **stack_from, int size)
-{
-	stack	*tmp;
-	stack	*head_to;
-	stack	*head_from;
-
-	if (size == 0)
-		return ;
-	head_to = *stack_to;
-	head_from = *stack_from;
-	tmp = head_from;
-	if (head_from)
-		head_from = head_from->next;
-	*stack_from = head_from;
-	if (!head_to)
-	{
-		head_to = tmp;
-		head_to->next = NULL;
-		*stack_to = head_to;
-	}
-	else
-	{
-		tmp->next = head_to;
-		*stack_to = tmp;
-	}
-}
-
-void	do_pa(stack **stacka_to, stack **stackb_from, int size)
-{
-	if (!stackb_from)
-		return ;
-	push(stacka_to, stackb_from, size);
-	write(1, "pa\n", 3);
-}
-
-void	do_pb(stack **from, stack **to, int size)
-{
-	if (!from)
-		return ;
-	push(to, from, size);
-	write(1, "pb\n", 3);
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:26:09 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 10:36:40 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:17:42 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 stack	*ft_lstlast(stack *lst)
 {
-	while (lst)
+	while (lst && lst->next)
 	{
 		lst = lst->next;
 	}
 	return (lst);
+}
+
+stack	*get_stack_bottom(stack *stack)
+{
+	while (stack->next != NULL)
+		stack = stack->next;
+	return (stack);
 }

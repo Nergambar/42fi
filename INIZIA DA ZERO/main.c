@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:35:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 13:32:34 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:42:03 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void tail_add(long num, stack **a)
 	}
 	else
 	{
-		printf("temp->value::%d\n", temp->value);
-		printf("temp->next::%p\n", temp->next);
 		while (temp->next != NULL)
 		{
 			temp = temp->next;
@@ -96,7 +94,7 @@ int		main(int ac, char **av)
 		b = (stack *)ft_calloc(1, sizeof(stack));
 		fill_stack_a(av, size, a);
 		indexes(a, size);
-		push_swap(a, b, size);
+		push_swap(&a, &b, size);
 	}
 	while(a)
 	{
