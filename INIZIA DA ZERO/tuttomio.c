@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:02:05 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 19:16:34 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/17 11:29:30 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void five(stack **a, stack **b)
 		while ((*a)->value != tall && (*a)->value != low)
 			do_ra(a);
 	do_pa(a, b);
-	while ((*a)->value != tall && (*a)->value != low)
-		do_ra(a);
+	if((*a)->value != tall && (*a)->value != low)
+		while ((*a)->value != tall && (*a)->value != low)
+			do_ra(a);
 	do_pa(a, b);
 	tiny(a, b);
 	if ((*b)->value == tall)
@@ -38,6 +39,7 @@ void five(stack **a, stack **b)
 		do_pb(b, a);
 		do_ra(a);
 	}
+	do_pb(b, a);
 }
 
 void four(stack **a, stack **b)
@@ -47,12 +49,24 @@ void four(stack **a, stack **b)
 
 	hi = tallest(*a);
 	low = low_value(*a);
-	if ((*a)->value != low && (*a)->next->value != hi)
-		while ((*a)->value != low && (*a)->next->value != hi)
+	printf("low = %d\n", low);
+	printf("hi = %d\n", hi);
+	if ((*a)->value != hi && (*a)->next->value != low)
+		while ((*a)->value != hi && (*a)->next->value != low)
 			do_ra(a);
 	do_pa(a, b);
 	tiny(a, b);
-	do_pb(b, a);
+	if ((*b)->value == hi)
+	{	
+		do_pb(b, a);
+		do_ra(a);
+	}
+	else
+	{
+		do_pb(b, a);
+	}
+	if ((*a)->value != low)
+		do_ra(a);
 }
 
 void indexes(stack *a, int size)

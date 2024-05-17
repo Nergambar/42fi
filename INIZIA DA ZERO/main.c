@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:35:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 18:19:30 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/17 11:13:55 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ int		main(int ac, char **av)
 			if (ft_atoimdf(av[i]))
 				dup[i - 1] = ft_atoimdf(av[i]);
 		}
-		if (dups(dup, i - 1) || sorted(dup, i - 1))
-			fterror(2);
+		if (dups(dup, i - 1)
+			|| sorted(dup, i - 1))
+			return(0);
 		size = i - 1;
 		b = (stack *)ft_calloc(1, sizeof(stack));
 		fill_stack_a(av, size, a);

@@ -6,11 +6,13 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:39:11 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 18:43:14 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/17 11:17:39 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	fterror(int i);
 
 int sorted(int *dup, int end)
 {
@@ -26,7 +28,7 @@ int sorted(int *dup, int end)
 		i++;
 	}
 	if (count == end - 1)
-		return(1);
+		fterror(1);
 	return(0);
 }
 int sorted_stack(stack *s, int size)
@@ -68,9 +70,14 @@ int dups(int *dup, int end)
 
 void	fterror(int i)
 {
-	if (i <= 2)
+	if (i == 2)
 	{
 		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	if (i == 1)
+	{
+		ft_putstr_fd("Error\nSorted", 2);
 		exit(EXIT_FAILURE);
 	}
 }

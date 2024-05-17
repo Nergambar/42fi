@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:31:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 18:27:19 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/17 10:45:14 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void fill_stack_a(char **av, int size, stack *a)
 			else
 			{
 				tail_add(ft_atoimdf(av[i]), &a);
-				a = a->next; // Assign the value of 0 to the assigned element in the stack.
-				printf("a->value = %d\n", a->value);
+				a = a->next;
 			}
 		}
 		i++;
