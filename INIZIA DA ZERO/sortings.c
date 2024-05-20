@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:10:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/17 17:36:30 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 11:43:39 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	push(stack **src, stack **dest)
 
 void	do_pa(stack **stack_b, stack **stack_a)
 {
+	indexes(*stack_b, get_stack_size(*stack_b));
 	push(stack_b, stack_a);
 	ft_putstr_fd("pa\n", 1);
 }

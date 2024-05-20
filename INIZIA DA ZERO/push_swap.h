@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:51:59 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/20 11:29:32 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 11:51:05 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct t_struct
 {
 	int				value;
+	int				cost;
 	bool			middle;
 	int				index;
 	bool			flag;
@@ -33,10 +34,10 @@ typedef struct t_struct
 stack	*get_stack_bottom(stack *stack);
 stack	*get_stack_before_bottom(stack *s);
 int		sorted_stack(stack *s, int size);
+void	cost(stack *a, int size);
 
 void	five(stack **a, stack **b);
 void	four(stack **a, stack **b);
-void	radix_sort(stack *s, int size);
 
 void	add_nodes(long num, stack **a);
 void	tail_add(long n, stack **a);
@@ -49,7 +50,6 @@ void	fill_stack_a(char **av, int size, stack *a);
 void	indexes(stack *a, int size);
 void	tiny(stack **a, stack **b);
 int		low_value(stack *a);
-//void	get_target_pos(stack *a);
 
 void	swap(stack *a, stack *b, char c);
 
@@ -71,8 +71,6 @@ int		tallest(stack *a);
 int		sorted(int *dup, int end);
 
 int		get_stack_size(stack *s);
-void	sort(stack **a, stack **b, int size);
-void	lis(stack **a);
 
 void	ft_lstclear(stack **lst);
 stack	*ft_lstnew(int content);
