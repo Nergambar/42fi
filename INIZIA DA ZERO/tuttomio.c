@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:02:05 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/20 11:54:04 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:03:02 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	cost(stack *a, int size)
 		if (a->index >= j)
 			a->cost = a->index - j;
 		else
-			a->cost = j - a->index;
+			a->cost = a->index - j;
 		a = a->next;
 	}
 }

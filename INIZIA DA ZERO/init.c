@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:31:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/17 10:45:14 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:15:50 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,19 @@ void fill_stack_a(char **av, int size, stack *a)
 		}
 		i++;
 	}
+}
+
+void	free_stack(stack **s)
+{
+	stack	*tmp;
+
+	if (!s || !(*s))
+		return ;
+	while (*s)
+	{
+		tmp = (*s)->next;
+		free(*s);
+		*s = tmp;
+	}
+	*s = NULL;
 }

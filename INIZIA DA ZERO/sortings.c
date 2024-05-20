@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:10:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/20 11:43:39 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:07:24 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ void	push(stack **src, stack **dest)
 	(*src)->next = *dest;
 	*dest = *src;
 	*src = tmp;
+	indexes(*dest, get_stack_size(*dest));
+	cost(*dest, get_stack_size(*dest));
 }
 
 void	do_pa(stack **stack_b, stack **stack_a)

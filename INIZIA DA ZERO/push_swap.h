@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:51:59 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/20 11:51:05 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:16:01 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	push_swap(stack **a, stack **b, int ac);
 int		nb_abs(int n);
 int		tallest(stack *a);
 int		sorted(int *dup, int end);
-
+void	free_stack(stack **s);
 int		get_stack_size(stack *s);
 
 void	ft_lstclear(stack **lst);

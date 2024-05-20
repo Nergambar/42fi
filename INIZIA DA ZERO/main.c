@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:35:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/20 11:55:26 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:17:21 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,18 @@ int		main(int ac, char **av)
 		size = i - 1;
 		b = (stack *)ft_calloc(1, sizeof(stack));
 		fill_stack_a(av, size, a);
-		indexes(a, size);
-		cost(a, size);
 		push_swap(&a, &b, size);
 	}
 	// while(a)
 	// {
-	// 	ft_printf("\n\na:%d\t\ta->index:%d\n\t%d", a->value, a->index, a->cost);
+	// 	ft_printf("\n\na:%d\tcost:%d\t\ta->index:%d", a->value, a->cost , a->index);
 	// 	a = a->next;
 	// }
 	// while(b)
 	// {
-	// 	ft_printf("\n\n\tb:%d\n", b->value);
+	// 	ft_printf("\n\n\n\nb:%d\tcost:%d\t\tb->index:%d", b->value, b->cost,b->index );
 	// 	b = b->next;
 	// }
-	ft_lstclear(&a);
+	free_stack(&a);
+	free_stack(&b);
 }
