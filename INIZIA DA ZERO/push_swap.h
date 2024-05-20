@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:51:59 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 18:53:17 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 11:29:32 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		sorted_stack(stack *s, int size);
 
 void	five(stack **a, stack **b);
 void	four(stack **a, stack **b);
+void	radix_sort(stack *s, int size);
 
 void	add_nodes(long num, stack **a);
 void	tail_add(long n, stack **a);
@@ -61,7 +62,7 @@ void	do_rra(stack **stacka);
 void	do_rrb(stack **stackb);
 
 void	push(stack **src, stack **dest);
-void	do_pa(stack **stack_a, stack **stack_b);
+void	do_pa(stack **stack_b, stack **stack_a);
 void	do_pb(stack **stack_a, stack **stack_b);
 
 void	push_swap(stack **a, stack **b, int ac);
@@ -69,10 +70,9 @@ int		nb_abs(int n);
 int		tallest(stack *a);
 int		sorted(int *dup, int end);
 
-//int		get_low_indpos(stack *s);
-//void	do_cheap(stack *a);
-//void	get_cost(stack *a, int ac);
-int		get_stack_size(stack **a);
+int		get_stack_size(stack *s);
+void	sort(stack **a, stack **b, int size);
+void	lis(stack **a);
 
 void	ft_lstclear(stack **lst);
 stack	*ft_lstnew(int content);

@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:10:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 17:33:53 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:36:30 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	rotate(stack **stac)
 	tmp = *stac;
 	*stac = (*stac)->next;
 	tail = get_stack_bottom(*stac);
+	if (!tail)
+		return ;
 	tmp->next = NULL;
 	tail->next = tmp;
 }

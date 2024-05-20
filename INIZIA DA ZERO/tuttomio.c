@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:02:05 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/17 11:29:30 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 11:21:50 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,23 @@ void five(stack **a, stack **b)
 {
 	int tall;
 	int low;
+	stack *end;
 
 	tall = tallest(*a);
 	low = low_value(*a);
-	if((*a)->value != tall && (*a)->value != low)
-		while ((*a)->value != tall && (*a)->value != low)
-			do_ra(a);
+	end = get_stack_bottom(*a);
+	end->prev = get_stack_before_bottom(*a);
+	if (low == (*a)->next->value && tall == end->value && end->value > end->prev->value)
+		return (swap(*a, *b, 'a'));
+	while ((*a)->value != tall && (*a)->value != low)
+		do_ra(a);
 	do_pa(a, b);
-	if((*a)->value != tall && (*a)->value != low)
-		while ((*a)->value != tall && (*a)->value != low)
-			do_ra(a);
+	while ((*a)->value != tall && (*a)->value != low)
+		do_ra(a);
 	do_pa(a, b);
 	tiny(a, b);
 	if ((*b)->value == tall)
-	{	
+	{
 		do_pb(b, a);
 		do_ra(a);
 	}
@@ -39,21 +42,26 @@ void five(stack **a, stack **b)
 		do_pb(b, a);
 		do_ra(a);
 	}
-	do_pb(b, a);
+	if ((*b)->value == low)
+		do_pb(b, a);
 }
 
 void four(stack **a, stack **b)
 {
 	int low;
 	int hi;
+	stack *end;
 
 	hi = tallest(*a);
 	low = low_value(*a);
+	end = get_stack_bottom(*a);
+	end->prev = get_stack_before_bottom(*a);/* 
 	printf("low = %d\n", low);
-	printf("hi = %d\n", hi);
-	if ((*a)->value != hi && (*a)->next->value != low)
-		while ((*a)->value != hi && (*a)->next->value != low)
-			do_ra(a);
+	printf("hi = %d\n", hi); */
+	if (low == (*a)->next->value && hi == end->value && end->value > end->prev->value)
+		return (swap(*a, *b, 'a'));
+	while ((*a)->value != hi && (*a)->value != low)
+		do_ra(a);
 	do_pa(a, b);
 	tiny(a, b);
 	if ((*b)->value == hi)
@@ -62,9 +70,7 @@ void four(stack **a, stack **b)
 		do_ra(a);
 	}
 	else
-	{
 		do_pb(b, a);
-	}
 	if ((*a)->value != low)
 		do_ra(a);
 }

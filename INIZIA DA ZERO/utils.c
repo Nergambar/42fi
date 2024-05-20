@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:56:52 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/16 13:30:29 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:29:28 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,19 @@ int check_number(char *str)
 		return (0);
 	}
 	return (1);
+}
+
+int get_stack_size(stack *s)
+{
+	stack *tmp;
+	int i;
+
+	i = 0;
+	tmp = s;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
 }

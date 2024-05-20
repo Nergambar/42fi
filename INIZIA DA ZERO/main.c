@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:35:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/17 11:13:55 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/20 11:34:55 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,7 @@ int		main(int ac, char **av)
 	if (ac < 2)
 		return(fterror(1), 0);
 	if (ac == 2)
-	{
 		return(ft_putstr_fd("not yet\n", 1), 0);
-	}
 	if (ac > 2)
 	{
 		while (av[++i])
@@ -97,15 +95,15 @@ int		main(int ac, char **av)
 		indexes(a, size);
 		push_swap(&a, &b, size);
 	}
-	while(a)
-	{
-		ft_printf("\n\na:%d\n", a->value);
-		a = a->next;
-	}
-	while(b)
-	{
-		ft_printf("\tb:%d\n", b->value);
-		b = b->next;
-	}
+	// while(a)
+	// {
+	// 	ft_printf("\n\na:%d\n", a->value);
+	// 	a = a->next;
+	// }
+	// while(b)
+	// {
+	// 	ft_printf("\tb:%d\n", b->value);
+	// 	b = b->next;
+	// }
 	ft_lstclear(&a);
 }
