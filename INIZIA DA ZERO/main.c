@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:35:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/20 12:17:21 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:58:33 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		main(int ac, char **av)
 	int i;
 	int *dup;
 	int size;
+	int *jdup;
 
 	a = NULL;
 	b = NULL;
@@ -71,39 +72,64 @@ int		main(int ac, char **av)
 	a->value = 0;
 	i = 0;
 	size = 0;
-	dup = malloc(sizeof(int) * (ac - 1));
+	dup = (int *)malloc(sizeof(int) * (ac - 1));
+	jdup = (int *)malloc(sizeof(int) * (ac - 1));
 	b = NULL;
+	int i2 = 0;
 	if (ac < 2)
 		return(fterror(1), 0);
 	if (ac == 2)
 		return(ft_putstr_fd("not yet\n", 1), 0);
 	if (ac > 2)
 	{
+		jdup[i2] = ft_atoimdf(av[1]);
+		printf("primo jdup[%d] = %d\n", i2, jdup[i2]);
 		while (av[++i])
 		{
 			if (!check_number(av[i]))
 				fterror(2);
 			if (ft_atoimdf(av[i]))
 				dup[i - 1] = ft_atoimdf(av[i]);
+//			printf("before alloc = %d < %d\n", ft_atoimdf(av[i]), ft_atoimdf(av[i + 1]));
+//			if (av[i+1] && (ft_atoimdf(av[i]) < ft_atoimdf(av[i + 1])))
+//			{
+			printf("alloc = %d < %d\n", jdup[i2], ft_atoimdf(av[i]));
+			if (jdup[i2] < ft_atoimdf(av[i]))
+			{
+				jdup[++i2] = ft_atoimdf(av[i]);
+				printf("jdup[%d] = %d\n", i2, jdup[i2]);
+			}
+//			}
 		}
-		if (dups(dup, i - 1)
-			|| sorted(dup, i - 1))
+		if (dups(dup, i - 1) || sorted(dup, i - 1))
 			return(0);
 		size = i - 1;
 		b = (stack *)ft_calloc(1, sizeof(stack));
 		fill_stack_a(av, size, a);
-		push_swap(&a, &b, size);
+		i = 0;
+		// if (size < 6)
+			// push_swap(&a, &b, size);
+		 if (size > 5)
+		{
+			if (jdup)
+				printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			while (jdup[i])
+			{
+				printf("\n\t%d", jdup[i++]);	
+			}
+		}
+			/* lis_sort(&a, &b, jdup); */
+	}/* 
+	while(a)
+	{
+		ft_printf("\n\na:%d\tcost:%d\t\ta->index:%d", a->value, a->cost , a->index);
+		a = a->next;
 	}
-	// while(a)
-	// {
-	// 	ft_printf("\n\na:%d\tcost:%d\t\ta->index:%d", a->value, a->cost , a->index);
-	// 	a = a->next;
-	// }
-	// while(b)
-	// {
-	// 	ft_printf("\n\n\n\nb:%d\tcost:%d\t\tb->index:%d", b->value, b->cost,b->index );
-	// 	b = b->next;
-	// }
+	while(b)
+	{
+		ft_printf("\n\n\n\nb:%d\tcost:%d\t\tb->index:%d", b->value, b->cost,b->index);
+		b = b->next;
+	} */
 	free_stack(&a);
 	free_stack(&b);
 }

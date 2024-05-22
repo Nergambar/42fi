@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:51:59 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/20 12:16:01 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:22:40 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct t_struct
 	bool			middle;
 	int				index;
 	bool			flag;
+	int				*dup;
 	struct t_struct	*next;
 	struct t_struct	*prev;
 }	stack;
@@ -35,6 +36,7 @@ stack	*get_stack_bottom(stack *stack);
 stack	*get_stack_before_bottom(stack *s);
 int		sorted_stack(stack *s, int size);
 void	cost(stack *a, int size);
+void	lis_sort(stack **a, stack **b, int *dup);
 
 void	five(stack **a, stack **b);
 void	four(stack **a, stack **b);
