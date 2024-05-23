@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/30 15:40:15 by negambar          #+#    #+#              #
-#    Updated: 2024/05/20 12:37:38 by negambar         ###   ########.fr        #
+#    Updated: 2024/05/23 12:36:17 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = main.c error.c ft_atoi_mdf.c\
 lists/ft_lstnew.c lists/ft_lstadd_front.c \
 lists/ft_lstsize.c lists/ft_lstlast.c lists/ft_lstadd_back.c lists/ft_lstdelone.c \
 lists/ft_lstclear.c lists/ft_lstiter.c ft_isdigit.c sortings.c \
-various_sort.c init.c utils.c tuttomio.c proviamoci_dai.c test.c\
+various_sort.c init.c utils.c tuttomio.c proviamoci_dai.c testing.c\
 
 CC = cc
 FLAGS = -Wall -Wextra -Werror -g -Ilibft -Iprintf

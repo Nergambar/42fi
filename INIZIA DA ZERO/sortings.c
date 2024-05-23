@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:10:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/20 12:07:24 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:59:15 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,15 +109,15 @@ void	push(stack **src, stack **dest)
 	cost(*dest, get_stack_size(*dest));
 }
 
-void	do_pa(stack **stack_b, stack **stack_a)
+void	do_pa(stack **from_b, stack **to_a)
 {
-	indexes(*stack_b, get_stack_size(*stack_b));
-	push(stack_b, stack_a);
+	indexes(*from_b, get_stack_size(*from_b));
+	push(from_b, to_a);
 	ft_putstr_fd("pa\n", 1);
 }
 
-void	do_pb(stack **stack_a, stack **stack_b)
+void	do_pb(stack **from_a, stack **to_b)
 {
-	push(stack_a, stack_b);
+	push(from_a, to_b);
 	ft_putstr_fd("pb\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:51:59 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/22 17:02:22 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:38:03 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	do_rra(stack **stacka);
 void	do_rrb(stack **stackb);
 
 void	push(stack **src, stack **dest);
-void	do_pa(stack **stack_b, stack **stack_a);
-void	do_pb(stack **stack_a, stack **stack_b);
+void	do_pa(stack **from_b, stack **to_a);
+void	do_pb(stack **from_a, stack **to_b);
 
 void	push_swap(stack **a, stack **b, int ac);
 int		nb_abs(int n);
@@ -81,5 +81,10 @@ int		ft_lstsize(stack *lst);
 void	ft_lstadd_back(stack **lst, stack *new);
 void	ft_lstdelone(stack *lst);
 void	ft_lstiter(stack *lst, void (*f)(void *));
+
+
+/* TEST */
+void	make_list(stack *a, stack *b);
+
 
 #endif

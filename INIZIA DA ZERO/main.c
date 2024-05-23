@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:35:41 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/23 10:51:52 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:35:56 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int		main(int ac, char **av)
 	int i;
 	int *dup;
 	int size;
-	int *jdup;
 
 	a = NULL;
 	b = NULL;
@@ -73,26 +72,19 @@ int		main(int ac, char **av)
 	i = 0;
 	size = 0;
 	dup = (int *)malloc(sizeof(int) * (ac - 1));
-	jdup = (int *)malloc(sizeof(int) * (ac - 1));
 	b = NULL;
-	int i2 = 0;
 	if (ac < 2)
 		return(fterror(1), 0);
 	if (ac == 2)
 		return(ft_putstr_fd("not yet\n", 1), 0);
 	if (ac > 2)
 	{
-		
-		jdup[i2] = ft_atoimdf(av[1]);
 		while (av[++i])
 		{
 			if (!check_number(av[i]))
 				fterror(2);
 			if (ft_atoimdf(av[i]))
 				dup[i - 1] = ft_atoimdf(av[i]);
-			if (jdup[i2] < ft_atoimdf(av[i]))
-				jdup[++i2] = ft_atoimdf(av[i]);
-		}
 		if (dups(dup, i - 1) || sorted(dup, i - 1))
 			return(0);
 		size = i - 1;
@@ -101,9 +93,8 @@ int		main(int ac, char **av)
 		i = 0;
 		if (size < 6)
 			push_swap(&a, &b, size);
-		if (size > 5)
-		{
-			
+		else
+			make_list(a, b);
 		}
 	}
 	while(a)

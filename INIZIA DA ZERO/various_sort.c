@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:28:40 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/23 10:45:05 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:38:08 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,26 @@ void push_swap(stack **a, stack **b, int size)
 		five(a, b);
 	
 }
-
-void lis_sort(stack **a, stack **b, int *dup)
+static int get_dup_size(int *dup)
 {
 	int i;
 
 	i = 0;
-	while(*a)
+	while (dup[i])
+		i++;
+	return (i);
+}
+
+void lis_sort(stack **a, stack **b, int *dup)
+{
+	int i;
+	int size;
+
+	size = get_dup_size(dup);
+	i = 0;
+	while(i < size)
 	{
+		printf("dup[i] = %d\n", dup[i]);
 		if ((*a)->value != dup[i])
 			do_pb(a, b);
 		else
