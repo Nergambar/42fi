@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:39:11 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/17 11:17:39 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:51:18 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int dups(int *dup, int end)
 		while(j < end)
 		{
 			if (dup[i] == dup[j])
-				return(1);
+				fterror(2);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:51:59 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/22 16:22:40 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:02:22 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct t_struct
 	bool			middle;
 	int				index;
 	bool			flag;
-	int				*dup;
 	struct t_struct	*next;
 	struct t_struct	*prev;
 }	stack;

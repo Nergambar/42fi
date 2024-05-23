@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:28:40 by negambar          #+#    #+#             */
-/*   Updated: 2024/05/22 16:00:45 by negambar         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:45:05 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void tiny(stack **a, stack **b)
 
 void push_swap(stack **a, stack **b, int size)
 {
-	indexes(*a, size);
 	if (size == 2)
 		swap(*a, *b, 'a');
 	if (size == 3)
@@ -52,7 +51,6 @@ void push_swap(stack **a, stack **b, int size)
 		four(a, b);
 	else if (size == 5)
 		five(a, b);
-	cost(*a, size);
 	
 }
 
