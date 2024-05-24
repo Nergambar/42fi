@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/30 15:40:15 by negambar          #+#    #+#              #
-#    Updated: 2024/05/23 12:36:17 by negambar         ###   ########.fr        #
+#    Updated: 2024/05/24 11:13:58 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,11 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT_MAKE) $(PRINTF_MAKE)
-	@echo Linking... $(NAME)
+	@echo Linking $(NAME)...
 	$(MAKE) -C $(LIBFT)
+	@echo linking libft...
 	$(MAKE) -C $(PRINTF)
+	@echo linking printf...
 	$(CC) $(OBJ) -o $(NAME) $(FLAGS) $(LIBS)
 
 %.o : %.c
@@ -44,7 +46,9 @@ clean:
 		@echo Cleaning...
 		@rm -f $(OBJ)
 		@make clean -C $(LIBFT)
+		@echo cleaning libft...
 		@make clean -C $(PRINTF)
+		@echo cleaning printf...
 fclean: clean
 		@echo Cleaning...
 		@make fclean -C $(LIBFT)
@@ -56,6 +60,9 @@ crash:
 		@rm -f $(OBJ)
 		@make clean -C $(LIBFT)
 		@make clean -C $(PRINTF)
+		@echo ...
+		@echo $(NAME) created
+		@echo Makefile crashed successfully
 re: fclean all
 .PHONY: clean fclean re all
 .SILENT:
