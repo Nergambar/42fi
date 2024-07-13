@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:38:29 by negambar          #+#    #+#             */
-/*   Updated: 2024/07/10 14:46:39 by negambar         ###   ########.fr       */
+/*   Updated: 2024/07/11 13:06:54 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	push_all_but3(t_stack **a, t_stack **b)
 			do_ra(a);
 		i++;
 	}
-	while ((size - push) > 3)
+	while (size - push > 3)
 	{
 		do_pb(a, b);
 		push++;

@@ -5,34 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 12:32:59 by negambar          #+#    #+#             */
-/*   Updated: 2024/07/11 12:57:31 by negambar         ###   ########.fr       */
+/*   Created: 2024/05/13 17:26:19 by negambar          #+#    #+#             */
+/*   Updated: 2024/07/13 17:43:58 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void do_rrboth(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
+static void	do_rev_rotate_both(t_stack **a, t_stack **b, int *ca, int *cb)
 {
-	while (*cost_a < 0 && *cost_b < 0)
+	while (*ca < 0 && *cb < 0)
 	{
-		(*cost_a)++;
-		(*cost_b)++;
+		(*ca)++;
+		(*cb)++;
 		do_rrr(a, b);
 	}
 }
 
-static void do_rboth(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
+static void	do_rotate_both(t_stack **a, t_stack **b, int *ca, int *cb)
 {
-	while (*cost_a > 0 && *cost_b > 0)
+	while (*ca > 0 && *cb > 0)
 	{
-		(*cost_a)--;
-		(*cost_b)--;
+		(*ca)--;
+		(*cb)--;
 		do_rr(a, b);
 	}
 }
 
-static void do_rotatea(t_stack **a, int *cost)
+static void	do_rotate_a(t_stack **a, int *cost)
 {
 	while (*cost)
 	{
@@ -49,7 +49,7 @@ static void do_rotatea(t_stack **a, int *cost)
 	}
 }
 
-static void do_rotateb(t_stack **b, int *cost)
+static void	do_rotate_b(t_stack **b, int *cost)
 {
 	while (*cost)
 	{
@@ -66,13 +66,13 @@ static void do_rotateb(t_stack **b, int *cost)
 	}
 }
 
-void do_move(t_stack **a, t_stack **b, int ca, int cb)
+void	do_move(t_stack **a, t_stack **b, int ca, int cb)
 {
 	if (ca < 0 && cb < 0)
-		do_rrboth(a, b, &ca, &cb);
+		do_rev_rotate_both(a, b, &ca, &cb);
 	else if (ca > 0 && cb > 0)
-		do_rboth(a, b, &ca, &cb);
-	do_rotatea(a, &ca);
-	do_rotateb(b, &cb);
+		do_rotate_both(a, b, &ca, &cb);
+	do_rotate_a(a, &ca);
+	do_rotate_b(b, &cb);
 	do_pa(a, b);
 }

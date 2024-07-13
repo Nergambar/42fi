@@ -1,36 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   input_check_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 11:51:29 by negambar          #+#    #+#             */
-/*   Updated: 2024/07/11 13:05:30 by negambar         ###   ########.fr       */
+/*   Created: 2024/05/26 17:25:28 by negambar          #+#    #+#             */
+/*   Updated: 2024/07/13 17:43:58 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_stack **src, t_stack **dst)
+int	ft_isdigit(char c)
 {
-	t_stack	*tmp;
-
-	if (!*src)
-		return ;
-	tmp = (*src)->next;
-	(*src)->next = *dst;
-	*dst = *src;
-	*src = tmp;
+	return (c >= '0' && c <= '9');
 }
 
-void	do_pa(t_stack **a, t_stack **b)
+int	is_sign(char c)
 {
-	push(a, b);
-	write(1, "pa\n", 3);
+	return (c == '+' || c == '-');
 }
-void	do_pb(t_stack **b, t_stack **a)
+
+int	nbstr_cmp(const char *s1, const char *s2)
 {
-	push(b, a);
-	write(1, "pb\n", 3);
+	int	i;
+	int	j;
+
+	i = 0;
+	j = i;
+	if (s1[i] == '+')
+	{
+		if (s2[j] != '+')
+			i++;
+	}
+	else
+	{
+		if (s2[j] == '+')
+			j++;
+	}
+	while (s1[i] != '\0' && s2[j] != '\0' && s1[i] == s2[j])
+	{
+		i++;
+		j++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
 }

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialisation.c                                   :+:      :+:    :+:   */
+/*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 11:06:24 by negambar          #+#    #+#             */
-/*   Updated: 2024/07/11 12:59:03 by negambar         ###   ########.fr       */
+/*   Created: 2024/05/13 17:26:29 by negambar          #+#    #+#             */
+/*   Updated: 2024/07/13 17:43:58 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *fill_stack_value(int ac, char **av)
+t_stack	*fill_stack_value(int ac, char **av)
 {
-	t_stack		*a;
+	t_stack		*stack_a;
 	long int	nb;
 	int			i;
 
-	a = NULL;
+	stack_a = NULL;
 	nb = 0;
 	i = 1;
 	while (i < ac)
@@ -27,39 +27,39 @@ t_stack *fill_stack_value(int ac, char **av)
 		if (nb > INT_MAX || nb < INT_MIN)
 			exit_error(2);
 		if (i == 1)
-			a = stack_new((int)nb);
+			stack_a = stack_new((int)nb);
 		else
-			stack_add_bottom(&a, stack_new((int)nb));
+			stack_add_bottom(&stack_a, stack_new((int)nb));
 		i++;
 	}
-	return (a);
+	return (stack_a);
 }
 
-void	assign_index(t_stack *stack_a, int stack_size)
+void	assign_index(t_stack *stack_a, int size)
 {
-	t_stack	*p;
+	t_stack	*ptr;
 	t_stack	*highest;
 	int		value;
 
-	while (--stack_size > 0)
+	while (--size > 0)
 	{
-		p = stack_a;
+		ptr = stack_a;
 		value = INT_MIN;
 		highest = NULL;
-		while (p)
+		while (ptr)
 		{
-			if (p->value == INT_MIN && p->index == 0)
-				p->index = 1;
-			if (p->value > value && p->index == 0)
+			if (ptr->value == INT_MIN && ptr->index == 0)
+				ptr->index = 1;
+			if (ptr->value > value && ptr->index == 0)
 			{
-				value = p->value;
-				highest = p;
-				p = stack_a;
+				value = ptr->value;
+				highest = ptr;
+				ptr = stack_a;
 			}
 			else
-				p = p->next;
+				ptr = ptr->next;
 		}
 		if (highest != NULL)
-			highest->index = stack_size;
+			highest->index = size;
 	}
 }

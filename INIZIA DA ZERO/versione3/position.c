@@ -5,37 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 12:05:17 by negambar          #+#    #+#             */
-/*   Updated: 2024/07/11 13:05:16 by negambar         ###   ########.fr       */
+/*   Created: 2024/05/13 17:27:16 by negambar          #+#    #+#             */
+/*   Updated: 2024/07/13 17:43:58 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void 	get_pos(t_stack **s)
+static void	get_position(t_stack **stack)
 {
 	t_stack	*tmp;
-	int 	pos;
+	int		i;
 
-	tmp = *s;
-	pos = 0;
+	tmp = *stack;
+	i = 0;
 	while (tmp)
 	{
-		tmp->pos = pos;
+		tmp->pos = i;
 		tmp = tmp->next;
-		pos++;
+		i++;
 	}
 }
 
-int get_lowest(t_stack **s)
+int	get_lowest(t_stack **stack)
 {
 	t_stack	*tmp;
 	int		lowest_index;
 	int		lowest_pos;
 
-	tmp = *s;
+	tmp = *stack;
 	lowest_index = INT_MAX;
-	get_pos(s);
+	get_position(stack);
 	lowest_pos = tmp->pos;
 	while (tmp)
 	{
@@ -79,19 +79,19 @@ static int	get_target(t_stack **a, int b_idx,
 	return (target_pos);
 }
 
-void get_target_pos(t_stack **a, t_stack **b)
+void	get_target_pos(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
-	int		t_pos;
+	t_stack	*tmp_b;
+	int		target_pos;
 
-	tmp = *b;
-	get_pos(a);
-	get_pos(b);
-	t_pos = 0;
-	while (tmp)
+	tmp_b = *b;
+	get_position(a);
+	get_position(b);
+	target_pos = 0;
+	while (tmp_b)
 	{
-		t_pos = get_target(a, tmp->index, INT_MAX, t_pos);
-		tmp->target_pos = t_pos;
-		tmp = tmp->next;
+		target_pos = get_target(a, tmp_b->index, INT_MAX, target_pos);
+		tmp_b->target_pos = target_pos;
+		tmp_b = tmp_b->next;
 	}
 }

@@ -5,22 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 12:26:37 by negambar          #+#    #+#             */
-/*   Updated: 2024/07/11 12:55:07 by negambar         ###   ########.fr       */
+/*   Created: 2024/05/13 17:16:45 by negambar          #+#    #+#             */
+/*   Updated: 2024/07/13 17:43:58 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_cost(t_stack **a, t_stack **b)
+void	get_cost(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
 	int		size_a;
 	int		size_b;
 
-	tmp_a = *a;
-	tmp_b = *b;
+	tmp_a = *stack_a;
+	tmp_b = *stack_b;
 	size_a = stack_size(tmp_a);
 	size_b = stack_size(tmp_b);
 	while (tmp_b)
@@ -33,16 +33,16 @@ void	get_cost(t_stack **a, t_stack **b)
 			tmp_b->cost_a = (size_a - tmp_b->target_pos) * -1;
 		tmp_b = tmp_b->next;
 	}
-	
 }
-void do_cheapest_move(t_stack **a, t_stack **b)
+
+void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
-	int 	cheapest;
-	int 	cost_a;
-	int 	cost_b;
+	int		cheapest;
+	int		cost_a;
+	int		cost_b;
 
-	tmp = *b;
+	tmp = *stack_b;
 	cheapest = INT_MAX;
 	while (tmp)
 	{
@@ -54,5 +54,5 @@ void do_cheapest_move(t_stack **a, t_stack **b)
 		}
 		tmp = tmp->next;
 	}
-	do_move(a, b, cost_a, cost_b);
+	do_move(stack_a, stack_b, cost_a, cost_b);
 }

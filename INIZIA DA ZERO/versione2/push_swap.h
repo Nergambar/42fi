@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:36:01 by negambar          #+#    #+#             */
-/*   Updated: 2024/07/10 14:29:15 by negambar         ###   ########.fr       */
+/*   Updated: 2024/07/11 13:12:59 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void	tiny(t_stack **a);
 void	sort(t_stack **a, t_stack **b);
 
 int		get_lowest(t_stack **s);
-void	get_target_pos(t_stack **a, t_stack **b);
 
 void	get_cost(t_stack **a, t_stack **b);
 void	do_cheapest_move(t_stack **a, t_stack **b);
+void	get_target_pos(t_stack **a, t_stack **b);
 
 void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
-void	do_sa(t_stack *a);
-void	do_sb(t_stack *b);
-void	do_ss(t_stack *a, t_stack *b);
+void	do_sa(t_stack **a);
+void	do_sb(t_stack **b);
+void	do_ss(t_stack **a, t_stack **b);
 void	do_pa(t_stack **a, t_stack **b);
 void	do_pb(t_stack **a, t_stack **b);
 void	do_ra(t_stack **a);
