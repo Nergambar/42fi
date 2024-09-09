@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:06:01 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/09 14:40:24 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:44:21 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 
 typedef struct s_env
 {
-	char	*reference;
-	t_env	*next;
+	char			**reference;
+	struct s_env	*next;
 }		t_env;
 
 typedef struct s_shell
@@ -45,6 +45,6 @@ typedef struct s_shell
 	int		*fd;
 }				t_shell;
 
-void	use_cmds(t_shell *shell);
+void	use_cmds(t_shell *shell, t_env *environment);
 
 #endif

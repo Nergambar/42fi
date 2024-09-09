@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:51:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/09 14:15:57 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:19:16 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,24 @@ t_env *new_environment(char **env)
 	i = 0;
 	enviroment = ft_calloc(1, sizeof(t_env));
 	while (env[i])
+		i++;
+	enviroment->reference = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!enviroment->reference)
+		return(NULL);
+	i = 0;
+	while (env[i] != NULL)
 	{
-		enviroment->reference = ft_strdup(env[i]);
+		enviroment->reference[i] = ft_strdup(env[i]);
 		i++;
 	}
+	enviroment->reference[i] = NULL;
 	return (enviroment);
 }
 
 int	main(int ac, char **av, char **env)
 {
 	(void)av;
+	(void)ac;
 	char *str;
 	t_shell	*main_shell;
 	t_env *enviroment;
@@ -103,15 +111,13 @@ int	main(int ac, char **av, char **env)
 (((`-._.-'`-._.-)))\n\n\n");
 		while (1)
 		{
-			int i = 0;
 			{
 				str = readline("prompt: ");
 				main_shell = set_structshell(str, NULL);
-				use_cmds(main_shell);
+				use_cmds(main_shell, enviroment);
 				add_history(str);
 				free(str);
 				printf("str %s\n", main_shell->new);
-				printf("\nmtx:%s\n", main_shell->mtx[i++]);
 				free_the_shell(main_shell);
 			}
 		}
