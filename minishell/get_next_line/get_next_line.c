@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:43:57 by negambar          #+#    #+#             */
-/*   Updated: 2023/12/18 16:52:13 by negambar         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:27:02 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*ft_str(char *s)
 
 char	*ft_get_line(int fd, char *buffer, char *nextl)
 {
-	int		read_check;
+	int	read_check;
 
 	read_check = 1;
 	while (read_check > 0)
@@ -119,6 +119,7 @@ char	*get_next_line(int fd)
 			free (nextl);
 		return (NULL);
 	}
+
 	res = NULL;
 	buffer = (char *)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	nextl = ft_get_line(fd, buffer, nextl);
@@ -129,13 +130,13 @@ char	*get_next_line(int fd)
 	return (res);
 }
 
-/* int main(void)
+int main(void)
 {
 	int fd;
 	int i;
 
 	i = 0;
-	fd = open("", O_RDONLY);
+	fd = open("base.txt", O_RDONLY);
 	if (fd < 0)
 	{
 		close(fd);
@@ -151,4 +152,3 @@ char	*get_next_line(int fd)
 	close(fd);
 	return 0;
 } 
- */

@@ -1,0 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/02 11:06:01 by negambar          #+#    #+#             */
+/*   Updated: 2024/09/09 13:11:38 by negambar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MINISHELL_H
+#define MINISHELL_H
+
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <errno.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <dirent.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <limits.h>
+# include <sys/mman.h>
+# include "libft/libft.h"
+
+
+typedef struct s_env
+{
+	struct s_env	*next;
+	char				*reference;
+}	t_env;
+
+typedef struct s_shell
+{
+	char	**mtx;
+	char	*new;
+	t_env	*env;
+	int		res;
+	int		*fd;
+}	t_shell;
+
+
+#endif

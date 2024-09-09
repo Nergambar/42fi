@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 10:47:43 by negambar          #+#    #+#              #
-#    Updated: 2024/04/22 15:32:00 by negambar         ###   ########.fr        #
+#    Updated: 2024/08/08 18:18:26 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ $(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 		ar rc $(NAME) $(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(FLAGS) $(MINILBX)
 %.o : %.c
-	@echo Compiling $<...
 	$(CC) $(FLAGS) -o $@ -c $<
 clean:
 		@echo Cleaning...
@@ -51,3 +50,4 @@ fclean: clean
 crash: fclean $(NAME); make clean
 re: fclean all
 .PHONY: clean fclean re all
+.SILENT:
