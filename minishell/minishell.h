@@ -6,12 +6,12 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:06:01 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/09 13:11:38 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:40:24 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
-#define MINISHELL_H
+# define MINISHELL_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -30,12 +30,11 @@
 # include <sys/mman.h>
 # include "libft/libft.h"
 
-
 typedef struct s_env
 {
-	struct s_env	*next;
-	char				*reference;
-}	t_env;
+	char	*reference;
+	t_env	*next;
+}		t_env;
 
 typedef struct s_shell
 {
@@ -44,7 +43,8 @@ typedef struct s_shell
 	t_env	*env;
 	int		res;
 	int		*fd;
-}	t_shell;
+}				t_shell;
 
+void	use_cmds(t_shell *shell);
 
 #endif

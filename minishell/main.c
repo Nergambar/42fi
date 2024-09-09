@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:51:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/09 13:14:51 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:15:57 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,7 @@ t_shell	*set_structshell(char *str, t_env *enviroment)
 	return(shell);
 }
 
-void use_cmds(t_shell *shell)
-{
-	int i;
-	char *buff[1000];
-
-	i = 0;
-	while (shell->mtx[i])
-		i++;
-	if (ft_strcmp(shell->mtx[0], "cd") == 0)
-		chdir("~");
-	char *c = getcwd(buff, sizeof(buff));
-	printf("pwd: %s\n", c);
-	
-}
+/* cerca home in env (strchr, salva in var, usa var per chdir), oldpwd != pwd. */
 
 void	free_the_shell(t_shell *shell)
 {
@@ -80,6 +67,7 @@ void	free_the_shell(t_shell *shell)
 	}
 	free(shell);
 }
+
 
 t_env *new_environment(char **env)
 {
