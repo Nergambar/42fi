@@ -6,66 +6,44 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:51:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/10 15:38:54 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:53:03 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "libft/libft.h"
 
-char	*new_string(char *str)
+char	**set_prompt(char *str)
 {
-	int		i;
-	char	s[2048];
-	int		j;
+	char	**mtx;
 
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		if (str[i] <= 32)
-		{
-			while (str[i] <= 32 && str[i + 1] <= 32)
-				i++;
-		}
-		s[j++] = str[i];
-		i++;
-	}
-	s[j] = '\0';
-	return (ft_strdup(s));
+	mtx = NULL;
+	mtx = ft_split(str, ' ');
+	if (!mtx)
+		return (NULL);
+	return (mtx);
 }
 
-t_shell	*set_structshell(char *str, t_env *enviroment)
-{
-	t_shell	*shell;
+// void	free_the_shell(t_shell *shell)
+// {
+// 	int	i;
 
-	shell = ft_calloc(1, sizeof(t_shell));
-	shell->new = new_string(str);
-	shell->mtx = ft_split(shell->new, ' ');
-	shell->env = enviroment;
-	return (shell);
-}
-
-void	free_the_shell(t_shell *shell)
-{
-	int	i;
-
-	if (shell)
-	{
-		i = 0;
-		if (shell->new)
-			free(shell->new);
-		if (shell->mtx)
-		{
-			while (shell->mtx[i++])
-				free(shell->mtx[i]);
-			free(shell->mtx);
-		}
-		if (shell->fd)
-			free(shell->fd);
-	}
-	free(shell);
-}
+// 	if (shell)
+// 	{
+// 		i = 0;
+// 		if (shell->new)
+// 			free(shell->new);
+// 		if (shell->mtx)
+// 		{
+// 			while (shell->mtx[i++])
+// 				free(shell->mtx[i]);
+// 			free(shell->mtx);
+// 		}
+// 		if (shell->fd)
+// 			free(shell->fd);
+// 	}
+// 	free(shell);
+// }
 
 t_env	*new_environment(char **env)
 {
@@ -89,31 +67,39 @@ t_env	*new_environment(char **env)
 	return (enviroment);
 }
 
-static int checkexit(t_shell *shell)
-{
-	if ((ft_strcmp(shell->mtx[0], "exit") == 0 && !(shell->mtx[1])) || \
-		(ft_strcmp(shell->mtx[0], "quit") == 0 && !(shell->mtx[1])) || \
-		(ft_strcmp(shell->mtx[0], "q") == 0 && !(shell->mtx[1])))
-		return(0);
-	return (1);
-}
+// static int checkexit(t_shell *shell)
+// {
+// 	if ((ft_strcmp(shell->mtx[0], "exit") == 0 && !(shell->mtx[1])) || \
+// 		(ft_strcmp(shell->mtx[0], "quit") == 0 && !(shell->mtx[1])) || \
+// 		(ft_strcmp(shell->mtx[0], "q") == 0 && !(shell->mtx[1])))
+// 		return(0);
+// 	return (1);
+// }
 
-int	main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **enviroment)
 {
 	char	*str;
 	t_shell	*main_shell;
-	t_env	*enviroment;
-
-	(void)av;
-	(void)ac;
-	enviroment = new_environment(env);
-	str = NULL;
+	//dicharazione struct shell
+	main_shell = (t_shell *)malloc(sizeof(t_shell));
+	if (!main_shell)
+		return (exit_failure)//FIND LIBRARY
+	main_shell->env = new_environment(enviroment);
+	//leggi ed esegui se possibile 
 	if (ac == 1)
 	{
 		while (1)
 		{
 			str = readline("prompt: ");
-			main_shell = set_structshell(str, NULL);
+			main_shell->mtx = set_prompt(str);
+			if (!main_shell)
+			{
+			/* da rivedere */
+				free(str);
+				break ;
+				//exit
+			}
+			free(str); 
 			use_cmds(main_shell, enviroment);
 			add_history(str);
 			free(str);
@@ -123,7 +109,7 @@ int	main(int ac, char **av, char **env)
 				clear_history();
 				break ;
 			}
-			printf("str %s\n", main_shell->new);
+			printf("str %s\n", str);
 			free_the_shell(main_shell);
 		}
 	}
