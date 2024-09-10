@@ -6,12 +6,12 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:51:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/09 16:19:16 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/10 10:58:23 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-# include "libft/libft.h"
+#include "libft/libft.h"
 
 char	*new_string(char *str)
 {
@@ -25,7 +25,7 @@ char	*new_string(char *str)
 	{
 		if (str[i] <= 32)
 		{
-			while (str[i] <= 32 && str[i+1] <= 32)
+			while (str[i] <= 32 && str[i + 1] <= 32)
 				i++;
 		}
 		s[j++] = str[i];
@@ -37,20 +37,19 @@ char	*new_string(char *str)
 
 t_shell	*set_structshell(char *str, t_env *enviroment)
 {
-	t_shell *shell;
+	t_shell	*shell;
 
 	shell = ft_calloc(1, sizeof(t_shell));
 	shell->new = new_string(str);
 	shell->mtx = ft_split(shell->new, ' ');
 	shell->env = enviroment;
-	return(shell);
+	return (shell);
 }
-
-/* cerca home in env (strchr, salva in var, usa var per chdir), oldpwd != pwd. */
 
 void	free_the_shell(t_shell *shell)
 {
-	int i;
+	int	i;
+
 	if (shell)
 	{
 		i = 0;
@@ -68,11 +67,10 @@ void	free_the_shell(t_shell *shell)
 	free(shell);
 }
 
-
-t_env *new_environment(char **env)
+t_env	*new_environment(char **env)
 {
-	t_env *enviroment;
-	int i;
+	t_env	*enviroment;
+	int		i;
 
 	i = 0;
 	enviroment = ft_calloc(1, sizeof(t_env));
@@ -80,7 +78,7 @@ t_env *new_environment(char **env)
 		i++;
 	enviroment->reference = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!enviroment->reference)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	while (env[i] != NULL)
 	{
@@ -93,22 +91,16 @@ t_env *new_environment(char **env)
 
 int	main(int ac, char **av, char **env)
 {
+	char	*str;
+	t_shell	*main_shell;
+	t_env	*enviroment;
+
 	(void)av;
 	(void)ac;
-	char *str;
-	t_shell	*main_shell;
-	t_env *enviroment;
-
-
 	enviroment = new_environment(env);
 	str = NULL;
 	if (ac == 1)
 	{
-		printf("(((_.-=-._.-=-._)))\n\
- ))~~~~~~~~~~~~~(( \n\
- (( >Minishell< ))\n\
- )).............(( \n\
-(((`-._.-'`-._.-)))\n\n\n");
 		while (1)
 		{
 			{

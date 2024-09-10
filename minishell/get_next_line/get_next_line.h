@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:43:14 by negambar          #+#    #+#             */
-/*   Updated: 2024/01/23 11:54:03 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/10 11:01:01 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-
 
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(char *s);
