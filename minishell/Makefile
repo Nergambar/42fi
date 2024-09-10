@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:42:56 by negambar          #+#    #+#              #
-#    Updated: 2024/09/09 14:55:02 by negambar         ###   ########.fr        #
+#    Updated: 2024/09/10 12:49:36 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ all: $(NAME) $(LIBFT)
 $(NAME): $(OBJ) $(LIBFT)
 		@echo loading...
 		@make -C $(LIBFT)
-		ar rc $(NAME) $(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(FLAGS) $(POST)
 		@echo complete!
 %.o : %.c

@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:06:01 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/10 10:58:31 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:55:10 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ typedef struct s_shell
 	int		*fd;
 }				t_shell;
 
+char	*new_string(char *str);
+t_shell	*set_structshell(char *str, t_env *enviroment);
+void	free_the_shell(t_shell *shell);
+t_env	*new_environment(char **env);
 void	use_cmds(t_shell *shell, t_env *environment);
 
 #endif

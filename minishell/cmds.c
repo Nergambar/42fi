@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:16:00 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/10 10:57:35 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:55:04 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,20 @@ static char	*find_home(t_env *environment)
 	}
 	home = ft_substr((const char *)environment->reference[i], 5, \
 		(ft_strlen(environment->reference[i])));
+	printf("\n\nPWD:: %s\n", home);
 	return (home);
+}
+
+static void print_env(t_env *envi)
+{
+	int i;
+
+	i = 0;
+	while (envi->reference[i])
+	{
+		printf("%s\n", envi->reference[i]);
+		i++;
+	}	
 }
 
 void	use_cmds(t_shell *shell, t_env *environment)
@@ -40,6 +53,7 @@ void	use_cmds(t_shell *shell, t_env *environment)
 		i++;
 	if (ft_strcmp(shell->mtx[0], "cd") == 0 && i == 1)
 		chdir((const char *)find_home(environment));
+	else if (ft_strcmp(shell->mtx[0], "env") == 0 && i == 1)
+		print_env(environment);
 	c = getcwd(buff, sizeof(buff));
-	printf("pwd: %s\n", c);
 }
