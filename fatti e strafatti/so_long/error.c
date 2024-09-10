@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:49:33 by negambar          #+#    #+#             */
-/*   Updated: 2024/08/08 18:25:30 by negambar         ###   ########.fr       */
+/*   Updated: 2024/04/26 11:16:17 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	error_check(char **mtx)
 		{
 			if (mtx[i][j] != 'E' && mtx[i][j] != 'P' && mtx[i][j] != '0'
 				&& mtx[i][j] != 'C' && mtx[i][j] != '1')
+			{
+				ft_printf("Error\n[invalid character found]");
 				return (0);
+			}
 			j++;
 		}
 		j = 0;
@@ -81,10 +84,16 @@ int	wall_maria(char **mtx)
 
 int	valid_h_l(char **mtx, t_struct *loop)
 {
-	if ((get_h(mtx) < 3 || get_l(mtx) < 5)
-		|| (get_h(mtx) < 5 || get_l(mtx) < 3))
+	if ((get_h(mtx) < 3 && get_l(mtx) < 5))
 	{
-		ft_printf("Error\n[length or heigth invalid]");
+		ft_printf("Error\n[length or heigth invalid1]");
+		clearmtx(mtx);
+		free(loop);
+		exit(1);
+	}
+	else if ((get_h(mtx) < 5 && get_l(mtx) < 3))
+	{
+		ft_printf("Error\n[length or heigth invalid2]");
 		clearmtx(mtx);
 		free(loop);
 		exit(1);

@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:52:29 by negambar          #+#    #+#             */
-/*   Updated: 2024/04/23 14:38:26 by negambar         ###   ########.fr       */
+/*   Updated: 2024/07/17 11:35:25 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int ac, char **av)
 	if (valid_map(av) == 0)
 		return (loop_free(loop), 1);
 	if (!mtx(open(av[1], O_RDONLY), loop))
-		return (ft_printf("Error\e[unexpected map found]"), free(loop), 1);
+		return (ft_printf("Error\n[unexpected map found]"), free(loop), 1);
 	valid_h_l(loop->matrix, loop);
 	dup = mtxdup(loop->matrix);
 	loop->moves = 1;
