@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 16:52:41 by negambar          #+#    #+#              #
-#    Updated: 2024/02/29 16:52:42 by negambar         ###   ########.fr        #
+#    Updated: 2024/09/10 15:04:23 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 # Compiler and compiler flags #
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Targets #
 $(NAME): $(OBJ)

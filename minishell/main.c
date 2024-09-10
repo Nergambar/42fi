@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:51:25 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/10 12:58:08 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:38:54 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,15 @@ t_env	*new_environment(char **env)
 	return (enviroment);
 }
 
+static int checkexit(t_shell *shell)
+{
+	if ((ft_strcmp(shell->mtx[0], "exit") == 0 && !(shell->mtx[1])) || \
+		(ft_strcmp(shell->mtx[0], "quit") == 0 && !(shell->mtx[1])) || \
+		(ft_strcmp(shell->mtx[0], "q") == 0 && !(shell->mtx[1])))
+		return(0);
+	return (1);
+}
+
 int	main(int ac, char **av, char **env)
 {
 	char	*str;
@@ -103,17 +112,29 @@ int	main(int ac, char **av, char **env)
 	{
 		while (1)
 		{
+			str = readline("prompt: ");
+			main_shell = set_structshell(str, NULL);
+			use_cmds(main_shell, enviroment);
+			add_history(str);
+			free(str);
+			if (!checkexit(main_shell))
 			{
-				str = readline("prompt: ");
-				main_shell = set_structshell(str, NULL);
-				use_cmds(main_shell, enviroment);
-				add_history(str);
-				free(str);
-				printf("str %s\n", main_shell->new);
 				free_the_shell(main_shell);
+				clear_history();
+				break ;
 			}
+			printf("str %s\n", main_shell->new);
+			free_the_shell(main_shell);
 		}
 	}
+	int i = 0;
+	while (enviroment->reference[i])
+	{
+		free(enviroment->reference[i]);
+		i++;
+	}
+	free(enviroment->reference);
+	free((void*)enviroment);
 	clear_history();
 	return (0);
 }

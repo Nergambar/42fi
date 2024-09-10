@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:16:00 by negambar          #+#    #+#             */
-/*   Updated: 2024/09/10 12:55:04 by negambar         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:22:36 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*find_home(t_env *environment)
 	}
 	home = ft_substr((const char *)environment->reference[i], 5, \
 		(ft_strlen(environment->reference[i])));
-	printf("\n\nPWD:: %s\n", home);
+	printf("PWD:: %s\n", home);
 	return (home);
 }
 
