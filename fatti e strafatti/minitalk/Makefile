@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 16:23:39 by negambar          #+#    #+#              #
-#    Updated: 2024/03/01 17:16:01 by negambar         ###   ########.fr        #
+#    Updated: 2024/03/04 16:28:57 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SERVER = server.c
 CLIENT = client.c
 
 OBJ = $(SRC:.c=.o)
+NOBJ = $(SERVER:.c=.o) $(CLIENT:.c=.o)
 
 CC = cc
 
@@ -37,7 +38,7 @@ $(NAME2): $(OBJ) client.o
 	$(CC) $(CFLAGS) client.o $(OBJ) -o client
 
 clean:
-	rm *.o printf/*.o
+	$(RM) $(OBJ) $(NOBJ)
 fclean: clean
 	$(RM) server client
 
