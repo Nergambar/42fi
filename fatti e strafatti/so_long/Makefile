@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 10:47:43 by negambar          #+#    #+#              #
-#    Updated: 2024/05/20 18:24:16 by negambar         ###   ########.fr        #
+#    Updated: 2024/12/16 15:23:49 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,14 +25,13 @@ SRC = utils_map/map_mtx.c utils_map/map.c \
 CC = cc
 FLAGS = -Wall -Wextra -Werror -g -Ilibft -Iprintf
 MINILBX = -Lminilibx-linux -lmlx -Llibft -Lprintf -lftprintf -lft -lXext -lX11
-
 OBJ = $(SRC:.c=.o)
-
 all: $(NAME) $(LIBFT) $(PRINTF)
 $(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 		@echo Linking... $(NAME)
 		@make -C $(LIBFT)
 		@make -C $(PRINTF)
+		ar rc $(NAME) $(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(FLAGS) $(MINILBX)
 %.o : %.c
 	@echo Compiling $<...
@@ -50,4 +49,3 @@ fclean: clean
 crash: fclean $(NAME); make clean
 re: fclean all
 .PHONY: clean fclean re all
-.SILENT:
