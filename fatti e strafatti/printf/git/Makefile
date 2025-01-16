@@ -3,7 +3,7 @@ NAME = libftprintf.a
 
 # Source files and object files #
 SRC = ft_printf.c ft_print_c.c ft_print_hex.c ft_print_n.c ft_print_s.c ft_print_u.c \
-	  ft_putchar.c ft_print_ptr.c ft_print_perc.c
+	ft_putchar.c ft_print_ptr.c ft_print_perc.c
 
 OBJ = $(SRC:.c=.o)
 
