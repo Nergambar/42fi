@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 17:01:05 by negambar          #+#    #+#             */
-/*   Updated: 2025/01/13 13:04:00 by negambar         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:40:32 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,31 @@
 */
 class Contact
 {
-	private: // means other classes cannot access this stuff
-		std::string first_name;
+	private: // means other classes cannot access this stuff 
+		std::string first_name;//(attributo)
 		std::string last_name;
 		std::string nickname;
 		std::string phonenumber;
 		std::string secret;
 
 	public: //means other classes can access this part
-		Contact(); //initialises the class
+		Contact(); //initialises the class (metodo, possono essere privati)
 		~Contact(); //destroys said class
-		int		addnew(Contact *contact);
-		void	show_contact() const;
-		void	list(int i) const;
+		int			addnew();
+		void		show_contact() const; // const non modificano le var e possono lavorare sulle connst e non
+		void		list(int i) const;
+		std::string	set_value(std::string& key, std::string& value);
+		std::string get_first_name() const;
+		std::string get_last_name() const;
+		std::string get_nickname() const;
+		std::string get_phonenumber() const;
+		std::string get_secret() const;
+
+		void set_first_name(std::string &s);
+		void set_last_name(std::string &s);
+		void set_nickname(std::string &s);
+		void set_secret(std::string &s);
+		void set_phonenumber(std::string &s);
 };
 
 #endif

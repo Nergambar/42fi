@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Get.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/12 16:53:44 by negambar          #+#    #+#             */
-/*   Updated: 2025/01/15 16:41:09 by negambar         ###   ########.fr       */
+/*   Created: 2025/01/15 15:51:22 by negambar          #+#    #+#             */
+/*   Updated: 2025/01/15 15:51:37 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
-#include <string>
-#include <cstdlib>
 #include "Contact.hpp"
 
-class PhoneBook {
-	public:
-	PhoneBook();
-	~PhoneBook();
-	int	push_contact();
-	int display(int n_contact) const;
-	void dcontact(int index) const;
-	int current() const;
-	int number() const;
+std::string Contact::get_first_name() const
+{
+	return(first_name);
+}
 
-	private:
-	int index;
-	int n_contacts;
-	Contact _contact[8];
-};
+std::string Contact::get_last_name() const
+{
+	return(last_name);
+}
 
-#endif
+std::string Contact::get_nickname() const
+{
+	return(nickname);
+}
+
+std::string Contact::get_phonenumber() const
+{
+	return(phonenumber);
+}
+
+std::string Contact::get_secret() const
+{
+	return(secret);
+}

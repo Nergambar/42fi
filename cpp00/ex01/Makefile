@@ -1,9 +1,9 @@
 NAME = phonebookandall
 
-SRCS = PhoneBook.cpp Contact.cpp main.cpp
+SRCS = PhoneBook.cpp Contact.cpp main.cpp Set.cpp Get.cpp
 
 CC = c++
-FLAGS = -std=c++98 -Wall -Wextra -Werror
+FLAGS = -std=c++98 -Wall -Wextra -Werror -g
 OBJ = $(SRCS:%.cpp=%.o)
 
 all: $(NAME)

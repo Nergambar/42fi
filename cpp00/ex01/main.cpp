@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:34:33 by negambar          #+#    #+#             */
-/*   Updated: 2025/01/14 14:56:40 by negambar         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:39:44 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int main()
 			return (1);
 		if (input == "ADD")
 		{
-			Contact contact;
-			if (phonebook.push_contact(contact))
+			if (phonebook.push_contact())
 				return (1);
 		}
 		else if (input == "SEARCH")

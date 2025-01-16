@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:05:40 by negambar          #+#    #+#             */
-/*   Updated: 2025/01/14 14:42:26 by negambar         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:40:53 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int PhoneBook::number() const
 	return(n_contacts);
 }
 
-int PhoneBook::push_contact(Contact contact)
+int PhoneBook::push_contact()
 {
 	if (index + 1 > 8)
 		index = 0;
-	if (contact.addnew(&_contact[index]))
+	if (_contact[index].addnew())
 		return (1);
 	index++;
 	if(n_contacts < 8)
