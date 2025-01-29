@@ -1,0 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/01/20 11:55:13 by negambar          #+#    #+#              #
+#    Updated: 2025/01/20 11:59:00 by negambar         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = zombie
+
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+
+CC = c++
+FLAGS = -std=c++98 -Wall -Wextra -Werror -g
+OBJ = $(SRCS:%.cpp=%.o)
+
+all: $(NAME)
+$(NAME): $(OBJ)
+	@echo Linking $(NAME)...
+	$(CC) $(OBJ) -o $(NAME)
+
+%.o : %.cpp
+	@echo Compiling $<...
+	$(CC) -o $@ -c $<
+clean:
+		@echo Cleaning...
+		@rm -f $(OBJ)
+fclean: clean
+	@echo Cleaning...
+	rm -f $(NAME)
+crash: fclean $(NAME); make clean; clear; ./$(NAME); rm -f $(NAME)
+re: fclean all
+.PHONY: clean fclean re all
+.SILENT:
