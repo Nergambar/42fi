@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 10:47:43 by negambar          #+#    #+#              #
-#    Updated: 2024/12/16 15:23:49 by negambar         ###   ########.fr        #
+#    Updated: 2025/01/20 16:11:43 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 		@echo Linking... $(NAME)
 		@make -C $(LIBFT)
 		@make -C $(PRINTF)
-		ar rc $(NAME) $(OBJ)
+		# ar rc $(NAME) $(OBJ)
 		$(CC) $(OBJ) -o $(NAME) $(FLAGS) $(MINILBX)
 %.o : %.c
 	@echo Compiling $<...

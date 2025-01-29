@@ -6,15 +6,17 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:05:40 by negambar          #+#    #+#             */
-/*   Updated: 2025/01/15 16:40:53 by negambar         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:45:36 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include "Contact.hpp"
 
 PhoneBook::PhoneBook() : index(0), n_contacts(0)
-{}
+{
+	for (int i = 0; i < 8; i++)
+		_contact[i] = Contact();
+}
 
 PhoneBook::~PhoneBook()
 {}
@@ -53,7 +55,7 @@ int PhoneBook::display(int n_contacts) const
 		std::cout << std::right << "Empty phone book atm" << std::endl;
 		return (1);
 	}
-	std::cout << "#index #First Name #Last Name #Nickname #" << std::endl;
+	std::cout << "#    index# First Name# Last Name# Nickname#" << std::endl;
 	for (int i = 0; i < n_contacts; i++)
 		_contact[i].list(i);
 	std:: cout << "\n";

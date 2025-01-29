@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:34:33 by negambar          #+#    #+#             */
-/*   Updated: 2025/01/15 16:39:44 by negambar         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:38:46 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main()
 {
 	std::string input;
 	PhoneBook phonebook;
+	int			j = 0;
 
 	while (true)
 	{
@@ -36,19 +37,35 @@ int main()
 				{
 					if (!(std::getline(std::cin, input)))
 						return(1);
-					int index = std::atoi(input.c_str());
-					if (index <= phonebook.number() && index >= 1)
+					bool valid = true;
+					for (int i = 0; i < input.length(); i++)
 					{
-						phonebook.dcontact(index - 1);
-						break ;
+						if (!std::isdigit(input[i]))
+						{
+							std::cout << "Wrong Index Value (range: 1 - " << phonebook.number() << ")" << std::endl;
+							valid = false;
+							break;
+						}
 					}
-					else
-						std::cout << "Wrong Index Value (range: 1 - " << phonebook.number() << ")" << std::endl;
+					if (valid)
+					{
+						int index = std::atoi(input.c_str());
+						if (index <= phonebook.number() && index >= 1)
+						{ 
+							phonebook.dcontact(index - 1); 
+							break;
+						}
+						else
+							std::cout << "Wrong Index Value (range: 1 - " << phonebook.number() << ")" << std::endl;
+					}
 				}
 			}
 		}
 		else if (input == "EXIT")
+		{
+			std::cout << "deleting all the contacts.\nyou're a monster, you know that right??" << std::endl;
 			break;
+		}
 		else
 			std::cout << "Invalid input. Try again." << std::endl;
 	}

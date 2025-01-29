@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 17:01:05 by negambar          #+#    #+#             */
-/*   Updated: 2025/01/15 16:40:32 by negambar         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:09:06 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ class Contact
 		int			addnew();
 		void		show_contact() const; // const non modificano le var e possono lavorare sulle connst e non
 		void		list(int i) const;
-		std::string	set_value(std::string& key, std::string& value);
 		std::string get_first_name() const;
 		std::string get_last_name() const;
 		std::string get_nickname() const;

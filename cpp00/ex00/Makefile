@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 14:07:34 by negambar          #+#    #+#              #
-#    Updated: 2025/01/13 14:27:39 by negambar         ###   ########.fr        #
+#    Updated: 2025/01/17 11:41:25 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ clean:
 		@rm -f $(OBJ)
 fclean: clean
 	@echo Cleaning...
-	rm -f $(OBJ)
+	rm -f $(NAME)
 crash: fclean $(NAME); make clean
 re: fclean all
 .PHONY: clean fclean re all
