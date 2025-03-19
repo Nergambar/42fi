@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 10:46:50 by negambar          #+#    #+#             */
-/*   Updated: 2024/11/25 11:33:28 by negambar         ###   ########.fr       */
+/*   Created: 2024/11/27 09:57:31 by negambar          #+#    #+#             */
+/*   Updated: 2025/02/26 15:21:29 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cube3d.h"
 
-
-int main()
+void	print_map(char **map)
 {
-	printf("Hello, World!\n");
+	while (*map)
+		printf("%s", *map++);
+	printf("%c\n", '\n');
+	return ;
 }

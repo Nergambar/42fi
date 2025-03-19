@@ -1,0 +1,21 @@
+F 1, 2, 50
+NO ./assets/one.xpm
+EA ./assets/four.xpm
+SO ./assets/two.xpm
+WE ./assets/three.xpm
+C 28, 30, 200
+
+
+1111111
+1000001
+1E000001
+1111111
+
+
+ 111111
+1000101
+1000001
+ 111111
+
+
+
