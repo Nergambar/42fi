@@ -21,8 +21,8 @@
 #include "./minilibx-linux/mlx.h"
 #include "libft/libft.h"
 
-#define S_W 1900
-#define S_H 1000
+#define S_W 1930
+#define S_H 1020
 #define BLOCK 32
 #define W 119
 #define A 97
@@ -35,7 +35,7 @@
 #define TILE_SIZE 32
 #define FOV 60
 #define ROTATION_SPEED 0.05
-#define PLAYER_SPEED 4
+#define PLAYER_SPEED 5
 
 #define TARGET_FPS 100
 #define FRAME_TIME_MS 10
@@ -157,6 +157,9 @@ void	clear_image(t_game *game);
 void	handle_player_movement(t_game *game,
 			float cos_angle, float sin_angle, int speed);
 
+int		check_surrounded_end(char **map, int i, int end, int end_before);
+int		check_segment(int *end, int *end_before, int i, char **map);
+int		check_char_helper(t_map *map, int j, int i);
 int		game_init(char **av, t_map *map, t_game *game);
 int		check_firsandlast(t_map *s_map, int i, int end, int start);
 int		first_other_walls(t_map *s_map, char **map, int i, int space);
@@ -202,7 +205,6 @@ int		check_direction_left(t_game *game, int code);
 int		check_direction_right(t_game *game, int code);
 int		mini_helper2(t_game *game, int tmp_x, int tmp_y);
 float	nor_angle(float angle);
-double	normalize_to_one(double num);
 int		int_imax(int n1, int n2);
 int		get_texture_color(t_img *texture, int x, int y);
 int		calc_tex_x(t_game *game, t_img *texture, int flag);

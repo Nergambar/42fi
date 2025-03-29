@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 12:48:32 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/10 12:10:01 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/29 10:00:34 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,4 @@ int	key_release(int keycode, t_player *player)
 	if (keycode == RIGHT)
 		player->right_rotate = false;
 	return (0);
-}
-
-int	check_left(t_game *game)
-{
-	int	result;
-
-	result = 0;
-	if (!result && (game->player.angle <= 1.5 || game->player.angle >= 4.5))
-		result = (check_direction_left(game, 0));
-	if (!result && (game->player.angle >= 3 && game->player.angle <= 6.3))
-		result = (check_direction_left(game, 1));
-	if (!result && (((game->player.angle >= 0
-					&& game->player.angle <= 3.3) || game->player.angle > 6)))
-		result = (check_direction_left(game, 2));
-	if (!result && (game->player.angle >= 1.5 && game->player.angle <= 6))
-		result = (check_direction_left(game, 3));
-	return (result);
 }

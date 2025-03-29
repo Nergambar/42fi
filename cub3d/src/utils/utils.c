@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:42:10 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/17 15:25:19 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:51:31 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,6 @@ int	trim_spaces(char *str)
 	return (0);
 }
 
-/*
-salta gli \n e spazi. per il resto e' identico ad uno strdup
-*/
 char	*cub3d_strdup(char *str)
 {
 	int		len;

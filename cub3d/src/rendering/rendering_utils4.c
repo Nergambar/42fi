@@ -6,19 +6,14 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 19:08:26 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/10 11:55:10 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:13:47 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
 
-/**
- * get_texture_color - Retrieves the color of a specific pixel from a texture.
- * @texture: Pointer to the texture image.
- * @x: X coordinate of the pixel.
- * @y: Y coordinate of the pixel.
- * 
- * Return: The color of the pixel.
+/*
+ * gets the color of a specific pixel in a texture
  */
 int	get_texture_color(t_img *texture, int x, int y)
 {
@@ -30,12 +25,8 @@ int	get_texture_color(t_img *texture, int x, int y)
 	return (color);
 }
 
-/**
- * calc_wall_px_hit - Calculates the wall pixel hit position.
- * @game: Pointer to the game structure.
- * @flag: Determines the axis (0 for y-axis, 1 for x-axis).
- * 
- * Return: The wall pixel hit position.
+/*
+ * calculates the wall pixel hit position
  */
 double	calc_wall_px_hit(t_game *game, int flag)
 {
@@ -50,11 +41,8 @@ double	calc_wall_px_hit(t_game *game, int flag)
 	return (wall_px);
 }
 
-/**
- * define_side - Determines the texture side based on the ray angle.
- * @game: Pointer to the game structure.
- * 
- * Return: Pointer to the selected texture image.
+/*
+ * determines the texture side based on ray direction
  */
 t_img	*define_side(t_game *game)
 {
@@ -77,12 +65,8 @@ t_img	*define_side(t_game *game)
 	return (texture);
 }
 
-/**
- * int_imax - Returns the maximum of two integers.
- * @n1: First integer.
- * @n2: Second integer.
- * 
- * Return: The maximum integer.
+/*
+ * returns the maximum of two integers
  */
 int	int_imax(int n1, int n2)
 {
@@ -91,9 +75,8 @@ int	int_imax(int n1, int n2)
 	return (n2);
 }
 
-/**
- * clear_image - Clears the game image by setting all pixels to black.
- * @game: Pointer to the game structure.
+/*
+ * clears the game image by setting all pixels to black
  */
 void	clear_image(t_game *game)
 {

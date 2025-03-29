@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:10:00 by negambar          #+#    #+#             */
-/*   Updated: 2025/02/26 15:21:29 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/28 13:57:08 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,25 +80,10 @@ static void	render_loop(t_game *game, t_player *player)
 	}
 }
 
-static long long	current_time_in_ms(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000LL) + (time.tv_usec / 1000LL));
-}
-
 int	draw_loop(t_game *game)
 {
 	t_player			*player;
-	static long long	last_frame_time = 0;
-	long long			current_time;
-	long long			elapsed_time;
 
-	current_time = current_time_in_ms();
-	elapsed_time = current_time - last_frame_time;
-	if (elapsed_time < FRAME_TIME_MS)
-		usleep((FRAME_TIME_MS - elapsed_time) * 1000);
 	player = &game->player;
 	move_player(game);
 	clear_image(game);
@@ -107,6 +92,5 @@ int	draw_loop(t_game *game)
 	game->ray_angle = player->angle - (player->fov_rd / 2);
 	render_loop(game, player);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
-	last_frame_time = current_time_in_ms();
 	return (0);
 }

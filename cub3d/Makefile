@@ -6,7 +6,7 @@
 #    By: negambar <negambar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 16:12:22 by negambar          #+#    #+#              #
-#    Updated: 2025/03/18 13:34:50 by negambar         ###   ########.fr        #
+#    Updated: 2025/03/29 10:00:59 by negambar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ NAME = cub3D
 LIBFT = ./libft/libft.a
 
 
-SRC = src/main.c src/debug.c \
+SRC = src/main.c \
 	src/parsing/parsing.c src/parsing/parsing2.c src/parsing/parsing3.c src/parsing/parsing4.c src/parsing/parsing_utils.c \
-	src/parsing/parsing_utils2.c src/parsing/parsing_utils3.c \
+	src/parsing/parsing_utils2.c src/parsing/parsing_utils3.c src/parsing/parsing_utils4.c\
 	src/parsing/parsing_walls.c src/parsing/parsing_walls2.c src/parsing/parsing_walls3.c \
 	src/utils/utils.c src/utils/utils2.c src/utils/utils3.c src/utils/gnl.c \
 	src/init/init.c src/init/init2.c \
-	src/controls/controls.c src/controls/control_helpers.c src/controls/collisions.c src/controls/check_dir_left.c src/controls/check_dir_right.c \
+	src/controls/controls.c src/controls/control_helpers.c \
 	src/rendering/rendering.c src/rendering/rendering_utils.c src/rendering/rendering_utils2.c \
 	src/rendering/rendering_utils3.c src/rendering/rendering_utils4.c \
 	src/free.c

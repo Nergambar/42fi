@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:23:12 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/18 11:29:01 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:08:12 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	game_init(char **av, t_map *map, t_game *game)
 void	init_dir(t_map *map, t_player *player)
 {
 	if (map->dir == 'N')
-		player->angle = 3 * PI / 2;
+		player->angle = 3 * (PI / 2);
 	else if (map->dir == 'S')
 		player->angle = PI / 2;
 	else if (map->dir == 'E')

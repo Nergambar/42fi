@@ -6,19 +6,13 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:12:58 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/19 12:18:34 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:12:35 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
-
-/**
- * get_h_inter - Calculate the horizontal intersection distance for a ray.
- *
- * This function calculates the distance from the player's position to the
- * nearest horizontal wall intersection based on the given angle.
- *
- * Return: The distance to the nearest horizontal wall intersection.
+/*
+ * calculates horizontal wall intersection distance
  */
 float	get_h_inter(t_player *player, t_map *map, float angl)
 {
@@ -44,15 +38,8 @@ float	get_h_inter(t_player *player, t_map *map, float angl)
 	return (sqrt(pow(h_x - player->p_x, 2) + pow(h_y - player->p_y, 2)));
 }
 
-/**
- * get_v_inter - Calculates the vertical intersection distance from the player
- * to the nearest wall in a given direction.
- * 
- * This function computes the distance from the player's position to the nearest
- * vertical wall intersection in the specified direction, taking into account
- * the angle and map layout.
- *
- * Return: The distance to the nearest vertical wall intersection.
+/*
+ * calculates vertical wall intersection distance
  */
 float	get_v_inter(t_player *player, t_map *map, float angl)
 {
@@ -78,9 +65,8 @@ float	get_v_inter(t_player *player, t_map *map, float angl)
 	return (sqrt(pow(v_x - player->p_x, 2) + pow(v_y - player->p_y, 2)));
 }
 
-/**
-	Checks if a given (x, y) coordinate hits a wall in the map.
-	1 if the coordinate does not hit a wall, 0 otherwise.
+/*
+ * helps with ray casting
  */
 int	wall_hit(float x, float y, t_map *map)
 {
@@ -98,6 +84,9 @@ int	wall_hit(float x, float y, t_map *map)
 	return (1);
 }
 
+/*
+ * calculates texture X coordinate for wall rendering
+ */
 int	calc_tex_x(t_game *game, t_img *texture, int flag)
 {
 	int				tex_x;
@@ -116,6 +105,9 @@ int	calc_tex_x(t_game *game, t_img *texture, int flag)
 	return (tex_x);
 }
 
+/*
+ * calculates texture Y coordinate for wall rendering
+ */
 int	calc_tex_y(t_img *texture, double tex_pos)
 {
 	const t_img	*tex;

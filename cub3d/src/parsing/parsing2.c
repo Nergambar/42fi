@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:41:38 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/19 15:20:05 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:22:48 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,17 @@ int	check_char(t_map *map, int start, int end, int i)
 	j = start -1;
 	while (map->map[i][++j] && j != end)
 	{
-		if (ft_strchr("0NSEW", map->map[i][j]))
+		if (!ft_strchr("10NSEW", map->map[i][j]) && map->map[i][j] != '\n')
 		{
-			if (!(ft_strchr("NSEW10", map->map[i + 1][j])
-				&& ft_strchr("NSEW10", map->map[i][j + 1])
-				&& ft_strchr("NSEW10", map->map[i - 1][j])
-				&& ft_strchr("NSEW10", map->map[i][j - 1])))
+			if (check_char_helper(map, j, i))
+			{
+				continue ;
+			}
+			else
+			{
 				return (1);
+			}
 		}
-		if (!ft_strchr("10NSEW ", map->map[i][j]) && map->map[i][j] != '\n')
-			return (1);
 		if (ft_strchr("NSEW", map->map[i][j]))
 		{
 			if (map->dir)

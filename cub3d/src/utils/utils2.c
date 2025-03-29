@@ -6,17 +6,12 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:17:09 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/05 12:47:48 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:51:23 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
 
-/*
-The put_pixel function sets the color of a pixel at the
- specified (x, y) within the screen bounds. 
-It assigns the color value to the corresponding bytes.
-*/
 void	put_pixel(int x, int y, int color, t_game *game)
 {
 	int	index;
@@ -29,7 +24,6 @@ void	put_pixel(int x, int y, int color, t_game *game)
 	game->img.addr[index + 2] = (color >> 16) & 0xFF;
 }
 
-/* same as before, just *color instead of color */
 void	put_pixel2(int x, int y, int *color, t_game *game)
 {
 	int	index;

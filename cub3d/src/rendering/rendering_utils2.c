@@ -6,19 +6,23 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:16:00 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/05 12:46:56 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:15:14 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
 
+/*
+ * creates a color in TRGB format
+ */
 int	create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-// Assigns floor and ceiling colors from the
-// map structure to the provided color arrays.
+/*
+ * assigns floor and ceiling colors from the map
+ */
 static void	assign_colors(t_map *map, int color_f[3], int color_c[3])
 {
 	color_f[0] = *map->f_color[0];
@@ -29,6 +33,9 @@ static void	assign_colors(t_map *map, int color_f[3], int color_c[3])
 	color_c[2] = *map->c_color[2];
 }
 
+/*
+ * renders the background with floor and ceiling colors
+ */
 void	render_background(t_game *game)
 {
 	t_map	*map;
@@ -56,6 +63,9 @@ void	render_background(t_game *game)
 	}
 }
 
+/*
+ * puts a pixel with a specific color on the image
+ */
 void	img_pix_put(t_game *game, int x, int y, int color)
 {
 	char	*pixel;
@@ -66,9 +76,4 @@ void	img_pix_put(t_game *game, int x, int y, int color)
 	pixel = (game->img.addr + (y * game->img.line_len
 				+ x * (game->img.bpp / 8)));
 	*(int *)pixel = color;
-}
-
-double	normalize_to_one(double num)
-{
-	return (num - floor(num));
 }

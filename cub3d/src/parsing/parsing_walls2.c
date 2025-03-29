@@ -5,25 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 15:25:19 by girindi           #+#    #+#             */
-/*   Updated: 2025/03/18 10:24:38 by negambar         ###   ########.fr       */
+/*   Created: 2025/02/05 15:25:19 by negambar          #+#    #+#            */
+/*   Updated: 2025/03/25 16:32:23 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
 
-static int	check_surrounded_end(char **map, int i, int end, int end_before)
+int	check_surrounded_end(char **map, int i, int end, int end_before)
 {
-	while (end < end_before)
-	{
-		if (map[i - 1][end_before] != '1')
-			return (1);
-		end_before--;
-	}
+	int	result;
+
+	result = check_segment(&end, &end_before, i, map);
+	if (result)
+		return (result);
 	while (end > end_before)
 	{
 		if (map[i][end] != '1')
-			return (1);
+		{
+			if (map[i][end] == ' ')
+			{
+				while (end > 0 && map[i][end] == ' ')
+					end--;
+				return (check_surrounded_end(map, i, end, end_before));
+			}
+			else
+				return (1);
+		}
 		end--;
 	}
 	return (0);

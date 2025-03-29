@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:16:25 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/18 11:30:31 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:22:42 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ void	txt_path(t_game *game, t_map *map)
 		i++;
 	}
 }
-
+/*
+ * The mlx_get_data_addr function returns information about a created image, allowing a user to modify it later.
+ It takes the image to use, and the number of bits needed to represent a pixel color (bits_per_pixel). 
+ mlx_get_data_addr returns an address that represents the beginning of the memory where the image is stored
+*/
 static int	data_address(t_game *game)
 {
 	void	*tmp_no;
@@ -124,14 +128,3 @@ void	create_textures(t_game *game, t_map *map)
 		exit(1);
 	}
 }
-
-/* int	exit_hook(t_game *game)
-{
-	// destroy_image(game);
-	printf("Window Closed\n");
-	free_matrix(game->map);
-	free_map(game->map_ref);
-	free_textures(game);
-	exit(1);
-	return (0);
-} */

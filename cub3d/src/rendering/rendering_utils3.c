@@ -6,19 +6,12 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 19:07:21 by negambar          #+#    #+#             */
-/*   Updated: 2025/03/08 13:54:53 by negambar         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:08:52 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
 
-/**
- * unit_circle - Checks if angle is in specific range for axis.
- * @angle: Angle in radians.
- * @c: Axis ('x' or 'y').
- *
- * Return: 1 if in range, else 0.
- */
 int	unit_circle(float angle, char c)
 {
 	if (c == 'x')
@@ -33,10 +26,6 @@ int	unit_circle(float angle, char c)
 	}
 	return (0);
 }
-/**
- * inter_check - Adjusts intersection and step based on angle and horizon.
- * Return: -1 if intersection adjusted, 1 otherwise.
- */
 
 int	inter_check(float angle, float *inter, float *step, int is_horizon)
 {
