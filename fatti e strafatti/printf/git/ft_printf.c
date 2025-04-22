@@ -6,7 +6,7 @@
 /*   By: negambar <negambar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:09:35 by negambar          #+#    #+#             */
-/*   Updated: 2023/11/19 13:36:25 by negambar         ###   ########.fr       */
+/*   Updated: 2025/04/04 12:24:07 by negambar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,9 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(arg);
 	return (pril);
+}
+
+int main()
+{
+	ft_printf("%d", "ciao", "bao");
 }
