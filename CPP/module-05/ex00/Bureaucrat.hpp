@@ -10,18 +10,18 @@ class Bureaucrat
 	private:
 	const std::string	name;
 		int					grade;
-		public:
+	public:
 		Bureaucrat(void);
 		Bureaucrat(std::string Name, int Grade);
 		Bureaucrat(const Bureaucrat &src);
+		Bureaucrat &operator=(const Bureaucrat &cpy);
 		~Bureaucrat(void);
-		
+
 		std::string getName(void) const;
 		int getGrade(void) const;
 		void setGrade(int Grade);
 		void increase();
 		void decrease();
-
 
 
 		class GradeTooHighException : public std::exception {

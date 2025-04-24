@@ -11,7 +11,7 @@ Bureaucrat::Bureaucrat(std::string Name, int Grade) : name(Name), grade(Grade)
         throw Bureaucrat::GradeTooHighException();
     else if (Grade > 150)
         throw Bureaucrat::GradeTooLowException();
-    std::cout << "Parametric Bureaucrat Constructor called" << std::endl;
+    std::cout << "Parametric Bureaucrat Constructor called" << RESETTEXT << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &src) : name(src.name), grade(src.grade)
@@ -21,7 +21,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &src) : name(src.name), grade(src.grade)
 
 Bureaucrat::~Bureaucrat(void)
 {
-    std::cout << "Bureaucrat default destructor called" << std::endl;
+    std::cout << "Bureaucrat default destructor called" << RESETTEXT << std::endl;
 }
 
 std::string Bureaucrat::getName(void) const
@@ -43,7 +43,7 @@ void Bureaucrat::signForm(AForm &form)
 {
 	try {
 		form.beSigned(*this);
-		std::cout << this->name << " signed " << form.getName() << std::endl;
+		std::cout << FORECYN << this->name << " signed " << form.getName() << RESETTEXT << std::endl;
 	}
 	catch(std::exception &e)
 	{
@@ -57,11 +57,11 @@ void Bureaucrat::executeForm(AForm const &form)
 	try
 	{
 		form.execute(*this);
-		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+		std::cout << FOREBLK << this->getName() << " executed " << form.getName() << RESETTEXT << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->getName() << " couldn't execute " << form.getName() << " because ";
+		std::cout << FOREGRN << this->getName() << " couldn't execute " << form.getName() << " because " << RESETTEXT;
 		std::cerr << e.what() << '\n';
 	}
 	

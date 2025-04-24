@@ -4,6 +4,16 @@
 #include <iostream>
 #include "AForm.hpp"
 
+#define RESETTEXT "\033[0m"
+#define FOREBLK "\033[30m"
+#define FORERED "\033[31m"
+#define FOREGRN "\033[32m"
+#define FOREYEL "\033[33m"
+#define FOREBLU "\033[34m"
+#define FOREMAG "\033[35m"
+#define FORECYN "\033[36m"
+#define FOREWHT "\033[37m"
+
 class AForm;
 
 class Bureaucrat

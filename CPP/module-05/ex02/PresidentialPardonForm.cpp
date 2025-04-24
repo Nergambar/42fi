@@ -21,7 +21,7 @@ void PresidentialPardonForm::execute(Bureaucrat const &src) const
 		std::cout << "Form not signed" << std::endl;
 	if (src.getGrade() > this->getExecGrade())
 		throw AForm::GradeTooLowException();
-	std::cout << name << "has been pardoned by Zaphod Beeblebrox";
+	std::cout << FOREMAG << name << FOREYEL << " has been pardoned by Zaphod Beeblebrox" << RESETTEXT << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src): AForm(src), name(src.name)

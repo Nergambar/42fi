@@ -2,11 +2,10 @@
 
 int main()
 {
-	
 	try
 	{
-		Bureaucrat Jule("Jule", 1);
-		Bureaucrat Miriam("Miriam", 150);
+		Bureaucrat Jule("Jule", 4);
+		Bureaucrat Miriam("Miriam", 130);
 		Jule.increase();
 		std::cout << Jule;
 		Miriam.decrease();

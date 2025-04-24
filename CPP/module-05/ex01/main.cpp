@@ -4,8 +4,8 @@ int main()
 {
     try
 	{
-    	Bureaucrat *paolo = new Bureaucrat("Paolo", 0);
-    	Bureaucrat *giuseppe = new Bureaucrat("Giuseppe", 1);  
+    	Bureaucrat *paolo = new Bureaucrat("Paolo", 4);
+    	Bureaucrat *giuseppe = new Bureaucrat("Giuseppe", 2);  
 		Form *c14 = new Form("c14", 20, 20);
         // paolo->decrementGrade();
 		//     std::cout << *paolo;
@@ -15,7 +15,7 @@ int main()
 		//     std::cout << *paolo;
 		// giuseppe->increase();
 		//     std::cout << "\n\n\n\n" << *giuseppe;
-		paolo->signForm(*c14);
+		// paolo->signForm(*c14);
 		giuseppe->signForm(*c14);
 		giuseppe->signForm(*c14);
 		delete paolo;
@@ -26,8 +26,5 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
-    
-
     return (0);
 }

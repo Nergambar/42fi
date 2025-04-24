@@ -16,7 +16,7 @@ AForm::AForm(const std::string name, int signgrade, int execgrade) : name(name),
 
 AForm::AForm(const AForm &src): name(src.name), signgrade(src.signgrade), execgrade(src.execgrade), issigned(src.issigned)
 {
-	std::cout << "AForm copy constructor called";
+	std::cout <<  "AForm copy constructor called" << std::endl;
 }
 
 AForm::~AForm(void)

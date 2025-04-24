@@ -15,6 +15,7 @@ class Bureaucrat
 		Bureaucrat(void);
 		Bureaucrat(std::string Name, int Grade);
 		Bureaucrat(const Bureaucrat &src);
+		Bureaucrat &operator=(const Bureaucrat &cpy);
 		~Bureaucrat(void);
 
 		void increase(void);

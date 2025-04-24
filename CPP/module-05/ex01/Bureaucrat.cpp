@@ -54,13 +54,19 @@ void Bureaucrat::signForm(Form &form)
 {
 	try {
 		form.beSigned(*this);
-		std::cout << this->name << " signed " << form.getName() << std::endl;
 	}
 	catch(std::exception &e)
 	{
 		std::cout << this->name << " couldn't sign " << form.getName() << " because ";
 		std::cerr << e.what() << std::endl;
 	}
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &cpy)
+{
+	(void)cpy;
+	std::cout << "Bureaucrat copy constructor called" << std::endl;
+	return(*this);
 }
 
 

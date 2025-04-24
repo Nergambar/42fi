@@ -52,7 +52,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
     return("grade too low");
 }
-
 void Bureaucrat::increase()
 {
     if (this->grade == 1)
@@ -65,6 +64,13 @@ void Bureaucrat::decrease()
     if (this->grade == 150)
         throw Bureaucrat::GradeTooLowException();
     grade++;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &cpy)
+{
+	(void)cpy;
+	std::cout << "Bureaucrat copy constructor called" << std::endl;
+	return(*this);
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
