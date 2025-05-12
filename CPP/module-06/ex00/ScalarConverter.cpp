@@ -27,9 +27,17 @@ void ScalarConverter::convert(std::string literal)
 
 	d = std::atof(literal.c_str());
 	i = (int)d;
-	if (isdigit(c))
-		c = (char)i;
-	f = round(d * 10.0f) / 10.0f;
+	if (literal.length() == 1 && !isdigit(c)) {
+        c = literal[0];
+        i = static_cast<int>(c);
+        f = static_cast<float>(c);
+        d = static_cast<double>(c);
+    }
+	else {
+        if (isdigit(c))
+            c = (char)i;
+        f = round(d * 10.0f) / 10.0f;
+    }
 
 	if ((d > INT_MAX || d < INT_MIN) && !(literal == "nan" || literal == "inf" || literal == "-inf"
 		|| literal == "nanf" || literal == "inff" || literal == "-inff"))
@@ -40,31 +48,36 @@ void ScalarConverter::convert(std::string literal)
 	else
 	{
 	// characters
-		if (i < 32 || i >= 127
+		if (c < 32 || c >= 127
 			|| literal == "nan" || literal == "inf" || literal == "-inf"
 			|| literal == "nanf" || literal == "inff" || literal == "-inff")
 			std::cout << "char: Non displayable" << std::endl;
 		else
-			std::cout << c << std::endl;
+			std::cout << "char: " << c << std::endl;
 
 		// intigers
 		if (literal == "nan" || literal == "inf" || literal == "-inf"
 			|| literal == "nanf" || literal == "inff" || literal == "-inff")
 			std::cout << "int: " << "Non Displayable" << std::endl;
+		else if (isprint(static_cast<int>(c)))
+		{
+			std::cout << "int: " << static_cast<int>(c) << std::endl;
+		}
+		
 		else
-				std::cout << "int: " << i << std::endl;
+			std::cout << "int: " << i << std::endl;
 	}
 
+	// floats
 	if ((d < std::numeric_limits<float>::min() || d > std::numeric_limits<float>::max())
 		&& !(literal == "nan" || literal == "inf" || literal == "-inf"
-		|| literal == "nanf" || literal == "inff" || literal == "-inff"))
+		|| literal == "nanf" || literal == "inff" || literal == "-inff") && !isprint(static_cast<int>(c)))
 	{
 		std::cout << "float: Surpasses limits" << std::endl;	
 		std::cout << "double: Surpasses limits" << std::endl;
 	}
 	else
 	{
-		// floats
 		if (literal == "nan" || literal == "inf" || literal == "-inf"
 			|| literal == "nanf" || literal == "inff" || literal == "-inff")
 			{
@@ -73,11 +86,10 @@ void ScalarConverter::convert(std::string literal)
 				else
 					std::cout << "float: " << literal << std::endl;
 			}
-		else if (f == std::atoi(literal.c_str()))
+		else if (f == static_cast<int>(f)) // Check if float is a whole number
 			std::cout << "float: " << f << ".0f" << std::endl;
 		else
 			std::cout << "float: " << f << "f" << std::endl;
-
 		// doubles
 		if (literal == "nan" || literal == "inf" || literal == "-inf"
 			|| literal == "nanf" || literal == "inff" || literal == "-inff")
@@ -87,7 +99,7 @@ void ScalarConverter::convert(std::string literal)
 				else
 					std::cout << "double: " << literal << std::endl;
 			}
-		else if (d == std::atoi(literal.c_str()))
+		else if (d == static_cast<int>(d))
 			std::cout << "double: " << d << ".0" << std::endl;
 		else
 			std::cout << "double: " << d << std::endl;
@@ -96,8 +108,12 @@ void ScalarConverter::convert(std::string literal)
 
 int main(int ac, char **av)
 {
-	(void)ac;
-	ScalarConverter *barto = new ScalarConverter;
-	ScalarConverter::convert(av[1]);
-	delete barto;
+	if (ac != 2)
+		std::cout << "wrong number of args" << std::endl;
+	else
+	{
+		ScalarConverter *barto = new ScalarConverter;
+		ScalarConverter::convert(av[1]);
+		delete barto;
+	}
 }
